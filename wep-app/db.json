@@ -1,0 +1,36 @@
+{
+    "students": [
+        {
+            "id": 1,
+            "name": "Wolverine",
+            "birthDate": "",
+            "grade": "8a Série",
+            "gender": "M",
+            "cpf": 123
+        },
+        {
+            "id": 2,
+            "name": "Homem-Aranha",
+            "birthDate": "",
+            "grade": "8a Série",
+            "gender": "M",
+            "cpf": 1234
+        },
+        {
+            "id": 3,
+            "name": "Leonardo",
+            "birthDate": "",
+            "grade": "8a Série",
+            "gender": "M",
+            "cpf": 777
+        },
+        {
+            "id": 4,
+            "name": "Vampira",
+            "birthDate": "",
+            "grade": "8a Série",
+            "gender": "F",
+            "cpf": 222
+        }
+    ]
+}

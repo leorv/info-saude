@@ -1,1 +1,43 @@
-<p>students-list works!</p>
+<div class="container search-table">
+    <div class="search-box">
+        <div class="row">
+            <div class="col-md-9">
+                <input type="text" id="myInput" class="form-control" placeholder="Pesquisar alunos"
+                    [formControl]="queryField">
+                <!-- <script>
+                    $(document).ready(function () {
+                        $("#myInput").on("keyup", function () {
+                            var value = $(this).val().toLowerCase();
+                            $("#myTable tr").filter(function () {
+                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                            });
+                        });
+                    });
+                </script> -->
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-lg btn-success" (click)="onSearch()">
+                    Pesquisar
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="search-list">
+        <h3>{{total}} alunos encontrados</h3>
+        <table class="table" id="myTable">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Série</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let result of results$ | async">
+                    <td>{{result.name}}</td>
+                    <td>{{result.grade}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
