@@ -1,7 +1,32 @@
 <div>
     <tabset>
-        <tab heading="Basic title" id="tab1">Basic content</tab>
-        <tab heading="Basic Title 1">Basic content 1</tab>
-        <tab heading="Basic Title 2">Basic content 2</tab>
+        <tab heading="Informações Básicas" id="tab1">
+            <div class="col-md-6">
+                <label>Nome</label>
+                <p>{{ student.name }}</p>
+            </div>
+            <div class="col-md-6">
+                <label>CPF</label>
+                <p>{{ student.cpf }}</p>
+            </div>
+            <div class="col-md-6">
+                <label>Data de Nascimento</label>
+                <p>{{ student.birthDate }}</p>
+            </div>
+            <div class="col-md-6">
+                <label>Gênero</label>
+                <p>{{ student.gender }}</p>
+            </div>
+            <div class="col-md-6">
+                <label>Série/Turma</label>
+                <p>{{ student.grade }}</p>
+            </div>
+        </tab>
+        <tab heading="Eventos">
+
+        </tab>
+        <tab heading="Vacinas">
+
+        </tab>
     </tabset>
 </div>

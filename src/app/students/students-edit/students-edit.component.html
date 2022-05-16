@@ -31,6 +31,24 @@
         </div>
     </div>
 
+    <div class="col-md-6">
+        <label for="cpf" class="form-label mt-3">CPF</label>
+        <input type="text" class="form-control" id="cpf" placeholder="CPF do Aluno" formControlName="cpf"
+            [ngClass]="{ 'is-invalid': submitted && hasError('cpf')}">
+        <div class="invalid-feedback" *ngIf="hasError('cpf')">
+            Informe um CPF para o aluno.
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <label for="grade" class="form-label mt-3">CPF</label>
+        <input type="text" class="form-control" id="grade" placeholder="Série/Turma do Aluno" formControlName="grade"
+            [ngClass]="{ 'is-invalid': submitted && hasError('grade')}">
+        <div class="invalid-feedback" *ngIf="hasError('grade')">
+            Informe uma turma/série para o aluno.
+        </div>
+    </div>
+
     <div class="col-12">
         <button class="btn btn-primary" type="submit" (click)="onSubmit()">Salvar</button>
         <button class="btn btn-outline-secondary" type="submit" (click)="onCancel()">Cancelar</button>

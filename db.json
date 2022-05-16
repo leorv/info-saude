@@ -1,44 +1,44 @@
 {
-    "students": [
-        {
-            "id": 1,
-            "name": "Ciclope",
-            "birthDate": "01/09/1963",
-            "grade": "7a Série",
-            "gender": "M",
-            "cpf": 81563218046
-        },
-        {
-            "id": 2,
-            "name": "Jean Grey",
-            "birthDate": "07/11/1965",
-            "grade": "7a Série",
-            "gender": "F",
-            "cpf": 39658221017
-        },
-        {
-            "id": 3,
-            "name": "Henry Hank McCoy (Fera)",
-            "birthDate": "25/05/1958",
-            "grade": "7a Série",
-            "gender": "M",
-            "cpf": 19045967030
-        },
-        {
-            "id": 4,
-            "name": "Robert Drake (Homem de Gelo)",
-            "birthDate": "08/02/1961",
-            "grade": "7a Série",
-            "gender": "M",
-            "cpf": 40759216037
-        },
-        {
-            "id": 5,
-            "name": "Warren Kenneth Worthington III",
-            "birthDate": "28/04/1966",
-            "grade": "7a Série",
-            "gender": "M",
-            "cpf": 49842867099
-        }
-    ]
+  "students": [
+    {
+      "id": 1,
+      "name": "Ciclope",
+      "gender": "M",
+      "birthDate": "1963-01-17T03:00:00.000Z",
+      "grade": "7a Série",
+      "cpf": ""
+    },
+    {
+      "id": 2,
+      "name": "Jean Grey",
+      "birthDate": "07/11/1965",
+      "grade": "7a Série",
+      "gender": "F",
+      "cpf": 39658221017
+    },
+    {
+      "id": 3,
+      "name": "Henry Hank McCoy (Fera)",
+      "birthDate": "25/05/1958",
+      "grade": "7a Série",
+      "gender": "M",
+      "cpf": 19045967030
+    },
+    {
+      "id": 4,
+      "name": "Robert Drake (Homem de Gelo)",
+      "birthDate": "08/02/1961",
+      "grade": "7a Série",
+      "gender": "M",
+      "cpf": 40759216037
+    },
+    {
+      "id": 5,
+      "name": "Warren Kenneth Worthington III",
+      "birthDate": "28/04/1966",
+      "grade": "7a Série",
+      "gender": "M",
+      "cpf": 49842867099
+    }
+  ]
 }

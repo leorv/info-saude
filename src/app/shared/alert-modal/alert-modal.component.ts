@@ -16,7 +16,6 @@ export class AlertModalComponent implements OnInit {
     ) { }
     
     ngOnInit(): void {
-        throw new Error('Method not implemented.');
     }
 
     onClose() {

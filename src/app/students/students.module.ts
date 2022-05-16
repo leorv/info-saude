@@ -17,14 +17,14 @@ import { StudentsEditComponent } from './students-edit/students-edit.component';
         StudentsListComponent,
         StudentsCreateComponent,
         StudentsDetailsComponent,
-        StudentsEditComponent
+        StudentsEditComponent,
     ],
     imports: [
         CommonModule,
         StudentsRoutingModule,
         ReactiveFormsModule,
         BsDatepickerModule.forRoot(),
-        TabsModule.forRoot()
+        TabsModule.forRoot(),
     ]
 })
 export class StudentsModule { }

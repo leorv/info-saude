@@ -1,3 +1,4 @@
+import { StudentsService } from './../students.service';
 import { SearchService } from './../../shared/search.service';
 import { Student } from './../student';
 import { ActivatedRoute } from '@angular/router';
@@ -15,11 +16,10 @@ export class StudentsDetailsComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private service: SearchService
+        private service: StudentsService
     ) { }
 
     ngOnInit(): void {
-
         this.route.params.pipe(
             map((params: any) => {
                 const id = params['id'];
