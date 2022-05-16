@@ -1,0 +1,36 @@
+<form class="row g-3 needs-validation" novalidate [formGroup]="form">
+    <div class="col-md-6">
+        <label for="nome" class="form-label mt-3">Nome</label>
+        <input type="text" class="form-control" id="nome" placeholder="Nome do Aluno" formControlName="name"
+            [ngClass]="{ 'is-invalid': submitted && hasError('nome')}">
+        <div class="invalid-feedback" *ngIf="hasError('nome')">
+            Informe um nome para o aluno.
+        </div>
+    </div>
+    <div class="col-md-6">
+        <label for="gender" class="form-label mt-3">Nome</label>
+        <select class="form-select" id="gender" formControlName="gender" aria-label="Selecione seu gênero"
+            [ngClass]="{ 'is-invalid': submitted && hasError('gender')}">
+            <option selected>Selecione o gênero</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+            <option value="O">Outro</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="hasError('gender')">
+            Informe um gênero para o aluno.
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
+            <label for="birthDate" class="form-label mt-3">Data de nascimento</label>
+            <input id="birthDate" type="text" placeholder="Datepicker" formControlName="birthDate" class="form-control" bsDatepicker>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit" (click)="onSubmit()">Salvar</button>
+        <button class="btn btn-outline-secondary" type="submit" (click)="onCancel()">Cancelar</button>
+        <button class="btn btn-outline-secondary" type="submit" (click)="onReturn()">Retornar</button>
+    </div>
+</form>

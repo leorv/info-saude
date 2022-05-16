@@ -1,4 +1,7 @@
 <div class="container search-table">
+    <div class="container mb-2">
+        <button class="btn btn-primary">Novo aluno</button>
+    </div>
     <div class="search-box">
         <div class="row">
             <div class="col-md-9">
@@ -29,12 +32,21 @@
                 <tr>
                     <th>Nome</th>
                     <th>Série</th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let result of results$ | async">
                     <td>{{result.name}}</td>
                     <td>{{result.grade}}</td>
+                    <th><button class="btn btn-outline-secondary" [routerLink]="['details', result.id]">Detalhes</button></th>
+                    <td>
+                        <button class="btn btn-outline-secondary" [routerLink]="['edit', result.id]">Editar</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger">Excluir</button>
+                    </td>
                 </tr>
             </tbody>
         </table>

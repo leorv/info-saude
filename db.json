@@ -2,35 +2,43 @@
     "students": [
         {
             "id": 1,
-            "name": "Wolverine",
-            "birthDate": "",
-            "grade": "8a Série",
+            "name": "Ciclope",
+            "birthDate": "01/09/1963",
+            "grade": "7a Série",
             "gender": "M",
-            "cpf": 123
+            "cpf": 81563218046
         },
         {
             "id": 2,
-            "name": "Homem-Aranha",
-            "birthDate": "",
-            "grade": "8a Série",
-            "gender": "M",
-            "cpf": 1234
+            "name": "Jean Grey",
+            "birthDate": "07/11/1965",
+            "grade": "7a Série",
+            "gender": "F",
+            "cpf": 39658221017
         },
         {
             "id": 3,
-            "name": "Leonardo",
-            "birthDate": "",
-            "grade": "8a Série",
+            "name": "Henry Hank McCoy (Fera)",
+            "birthDate": "25/05/1958",
+            "grade": "7a Série",
             "gender": "M",
-            "cpf": 777
+            "cpf": 19045967030
         },
         {
             "id": 4,
-            "name": "Vampira",
-            "birthDate": "",
-            "grade": "8a Série",
-            "gender": "F",
-            "cpf": 222
+            "name": "Robert Drake (Homem de Gelo)",
+            "birthDate": "08/02/1961",
+            "grade": "7a Série",
+            "gender": "M",
+            "cpf": 40759216037
+        },
+        {
+            "id": 5,
+            "name": "Warren Kenneth Worthington III",
+            "birthDate": "28/04/1966",
+            "grade": "7a Série",
+            "gender": "M",
+            "cpf": 49842867099
         }
     ]
 }

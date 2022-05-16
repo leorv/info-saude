@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, map, Observable, switchMap, tap } from 'rxjs';
 import { SearchService } from 'src/app/shared/search.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-students-list',
@@ -18,7 +19,9 @@ export class StudentsListComponent implements OnInit {
     readonly fields: string = 'id, name, lastName, grade';
 
     constructor(
-        private searchService: SearchService
+        private searchService: SearchService,
+        private router: Router,
+        private route: ActivatedRoute
     ) { }
 
     ngOnInit(): void {
@@ -34,7 +37,6 @@ export class StudentsListComponent implements OnInit {
                     fields: this.fields
                 })),
                 tap((res: Student[]) => this.total = res.length)
-                // map((res: Student[]) => res)
             );
     }
 
@@ -62,4 +64,12 @@ export class StudentsListComponent implements OnInit {
                 );
         }
     }
+
+    // onDetails(id: number){
+    //     this.router.navigate(['details', id], { relativeTo: this.route })
+    // }
+
+    // onEditStudent(id: number){
+    //     this.router.navigate(['edit', id], { relativeTo: this.route});
+    // }
 }

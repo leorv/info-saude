@@ -15,19 +15,24 @@ export class SearchService {
         private http: HttpClient
     ) { }
 
-    getStudents(params?: {search: string, fields: string}): Observable<Student[]>{
-        if (params){
-            return this.http.get<Student[]>(this.API, {params});
+
+    getStudents(params?: { search: string, fields: string }): Observable<Student[]> {
+        if (params) {
+            return this.http.get<Student[]>(this.API, { params });
         } else {
             return this.http.get<Student[]>(this.API);
         }
+    }
+
+    getStudentsById(id: number): Observable<Student> {
+        return this.http.get<Student>(`${this.API}/${id}`);
     }
 
     // getStudentsByName(name: string): Observable<Student[]>{
     //     return this.http.get<Student[]>(this.API, )
     //         .pipe(
     //             delay(1500),
-                
+
     //             tap(console.log)
     //         );
     // }
