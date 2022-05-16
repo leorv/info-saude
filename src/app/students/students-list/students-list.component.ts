@@ -2,8 +2,8 @@ import { Student } from './../student';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, map, Observable, switchMap, tap } from 'rxjs';
-import { SearchService } from 'src/app/shared/search.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StudentsService } from '../students.service';
 
 @Component({
     selector: 'app-students-list',
@@ -19,7 +19,7 @@ export class StudentsListComponent implements OnInit {
     readonly fields: string = 'id, name, lastName, grade';
 
     constructor(
-        private searchService: SearchService,
+        private studentsService: StudentsService,
         private router: Router,
         private route: ActivatedRoute
     ) { }
@@ -32,7 +32,7 @@ export class StudentsListComponent implements OnInit {
                 debounceTime(400),
                 distinctUntilChanged(),
                 // tap(value => console.log(value)),
-                switchMap(value => this.searchService.getStudents({
+                switchMap(value => this.studentsService.getStudents({
                     search: value,
                     fields: this.fields
                 })),
@@ -57,7 +57,7 @@ export class StudentsListComponent implements OnInit {
             // params = params.set('search', value);
             // params = params.set('fields', fields);
 
-            this.results$ = this.searchService.getStudents()
+            this.results$ = this.studentsService.getStudents()
                 .pipe(
                     tap((res: Student[]) => this.total = res.length)
                     // map((res: Student[]) => res.results)

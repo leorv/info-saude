@@ -2,9 +2,11 @@ import { Student } from './../student';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
-import { SearchService } from 'src/app/shared/search.service';
 import { map, switchMap } from 'rxjs';
+import { StudentsService } from '../students.service';
+import { AlertModalService } from 'src/app/shared/alert-modal.service';
 
 
 @Component({
@@ -22,18 +24,20 @@ export class StudentsEditComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private service: SearchService
+        private service: StudentsService,
+        private location: Location,
+        private modal: AlertModalService
     ) { }
 
     ngOnInit(): void {
         this.form = this.formBuilder.group({
             id: 0,
-            nome: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(128)]],
+            name: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(128)]],
+            gender: ["", Validators.required],
             birthDate: [new Date, Validators.required],
             grade: ["", Validators.required],
             cpf: [0] // TODO: Validação para o CPF.
         });
-
 
         this.route.params.pipe(
             map((params: any) => {
@@ -41,8 +45,8 @@ export class StudentsEditComponent implements OnInit {
                 return id;
             }),
             switchMap((id: number) => this.service.getStudentsById(id))
-        ).subscribe((student: Student) => this.updateForm(student))
-        
+        ).subscribe((student: Student) => this.updateForm(student));
+
         // .subscribe(
         //     (params: any) => {
         //         const id: number = params.id;
@@ -57,7 +61,7 @@ export class StudentsEditComponent implements OnInit {
         //     })
     }
 
-    updateForm(student: Student){
+    updateForm(student: Student) {
         this.form.patchValue({
             id: student.id,
             name: student.name,
@@ -73,35 +77,31 @@ export class StudentsEditComponent implements OnInit {
         this.form.reset();
     }
 
-    onReturn(){
+    onReturn() {
         this.router.navigate(['..']);
     }
 
     onSubmit() {
         this.submitted = true;
-        // if (this.form.valid) {
+        if (this.form.valid) {
 
-        //     let msgSuccess = 'Curso criado com sucesso!';
-        //     let msgError = 'Erro ao criar curso.';
-        //     if (this.form.value.id) {
-        //         msgSuccess = 'Curso atualizado com sucesso!';
-        //         msgError = 'Erro ao atualizar curso.';
-        //     }
+            let msgSuccess = 'Informações atualizadas com sucesso!';
+            let msgError = 'Erro ao tentar gravar as informações.';
 
-        //     this.cursosService.save(this.form.value).subscribe({
-        //         next: success => {
-        //             this.modal.showAlertSuccess(msgSuccess);
-        //             this.location.back();
-        //         },
-        //         error: error => {
-        //             this.modal.showAlertDanger(msgError);
-        //         }
-        //     })
-        // }
+            this.service.updateStudent(this.form.value).subscribe({
+                next: success => {
+                    this.modal.showAlertSuccess(msgSuccess);
+                    this.location.back();
+                },
+                error: error => {
+                    this.modal.showAlertDanger(msgError);
+                }
+            })
+        }
     }
 
-    hasError(field: string){
-
+    hasError(field: string) {
+        return this.form.get(field)?.errors;
     }
 
 }

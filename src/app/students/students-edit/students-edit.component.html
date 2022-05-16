@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <label for="gender" class="form-label mt-3">Nome</label>
+        <label for="gender" class="form-label mt-3">Gênero</label>
         <select class="form-select" id="gender" formControlName="gender" aria-label="Selecione seu gênero"
             [ngClass]="{ 'is-invalid': submitted && hasError('gender')}">
             <option selected>Selecione o gênero</option>
@@ -25,6 +25,9 @@
         <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
             <label for="birthDate" class="form-label mt-3">Data de nascimento</label>
             <input id="birthDate" type="text" placeholder="Datepicker" formControlName="birthDate" class="form-control" bsDatepicker>
+            <div class="invalid-feedback" *ngIf="hasError('gender')">
+                Informe uma data de nascimento.
+            </div>
         </div>
     </div>
 

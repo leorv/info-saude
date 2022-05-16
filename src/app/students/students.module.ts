@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 import { StudentsRoutingModule } from './students-routing.module';
 import { StudentsListComponent } from './students-list/students-list.component';
@@ -22,7 +23,8 @@ import { StudentsEditComponent } from './students-edit/students-edit.component';
         CommonModule,
         StudentsRoutingModule,
         ReactiveFormsModule,
-        BsDatepickerModule.forRoot()
+        BsDatepickerModule.forRoot(),
+        TabsModule.forRoot()
     ]
 })
 export class StudentsModule { }
