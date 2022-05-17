@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, take } from 'rxjs';
+import { Observable, take, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Student } from './student';
 
@@ -23,6 +23,10 @@ export class StudentsService {
 
     getStudentsById(id: number): Observable<Student> {
         return this.http.get<Student>(`${this.API}/${id}`).pipe(take(1));
+    }
+
+    createStudent(student: Student) {
+        return this.http.post(`${this.API}`, student).pipe(take(1));
     }
 
     updateStudent(student: Student) {
