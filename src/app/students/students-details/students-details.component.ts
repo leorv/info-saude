@@ -12,7 +12,7 @@ import { map, switchMap } from 'rxjs';
 })
 export class StudentsDetailsComponent implements OnInit {
 
-    student: Student = { id: 0, name: '', gender: '', birthDate: new Date, grade: '', cpf: 0};
+    student: Student = { id: 0, name: '', gender: '', birthDate: new Date, grade: '', cpf: 0, events: []};
 
     constructor(
         private route: ActivatedRoute,

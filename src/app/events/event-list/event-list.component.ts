@@ -1,21 +1,21 @@
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AlertModalService } from './../../shared/alert-modal.service';
-import { Student } from './../student';
+import { Event } from './../event';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, EMPTY, filter, map, Observable, switchMap, take, tap } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StudentsService } from '../students.service';
+import { EventsService } from '../events.service';
 
 @Component({
-    selector: 'app-students-list',
-    templateUrl: './students-list.component.html',
-    styleUrls: ['./students-list.component.css']
+    selector: 'app-event-list',
+    templateUrl: './event-list.component.html',
+    styleUrls: ['./event-list.component.css']
 })
-export class StudentsListComponent implements OnInit {
+export class EventsListComponent implements OnInit {
 
     queryField: FormControl = new FormControl;
-    results$: Observable<Student[]> = new Observable();
+    events$: Observable<Event[]> = new Observable();
     total: number = 0;
 
     readonly fields: string = 'id, name, lastName, grade';
@@ -23,12 +23,12 @@ export class StudentsListComponent implements OnInit {
     // delete Modal
     modalRef?: BsModalRef;
     message?: string;
-    selectedStudent: number = 0;
+    selectedEvent: number = 0;
 
     @ViewChild('deleteModal') deleteModal: any;
 
     constructor(
-        private studentsService: StudentsService,
+        private eventsService: EventsService,
         private router: Router,
         private route: ActivatedRoute,
         private alertModalService: AlertModalService
@@ -39,18 +39,18 @@ export class StudentsListComponent implements OnInit {
     }
 
     onRefresh() {
-        this.results$ = this.queryField.valueChanges
+        this.events$ = this.queryField.valueChanges
             .pipe(
                 map(value => value.trim()),
                 filter(value => value.length > 1),
                 debounceTime(400),
                 distinctUntilChanged(),
                 // tap(value => console.log(value)),
-                switchMap(value => this.studentsService.getStudents({
+                switchMap(value => this.eventsService.getEvents({
                     search: value,
                     fields: this.fields
                 })),
-                tap((res: Student[]) => this.total = res.length)
+                tap((res: Event[]) => this.total = res.length)
             );
     }
 
@@ -71,10 +71,10 @@ export class StudentsListComponent implements OnInit {
             // params = params.set('search', value);
             // params = params.set('fields', fields);
 
-            this.results$ = this.studentsService.getStudents()
+            this.events$ = this.eventsService.getEvents()
                 .pipe(
-                    tap((res: Student[]) => this.total = res.length)
-                    // map((res: Student[]) => res.results)
+                    tap((res: Event[]) => this.total = res.length)
+                    // map((res: Event[]) => res.events)
                 );
         }
     }
@@ -83,18 +83,18 @@ export class StudentsListComponent implements OnInit {
     //     this.router.navigate(['details', id], { relativeTo: this.route })
     // }
 
-    // onEditStudent(id: number){
+    // onEditEvent(id: number){
     //     this.router.navigate(['edit', id], { relativeTo: this.route});
     // }
 
     onDelete(id: number) {
         // this.cursoSelecionado = id;
         // this.modalRef = this.modalService.show(this.deleteModal, { class: 'modal-sm' });
-        const result$ = this.alertModalService.showConfirmModal('Confirmação', 'Quer realmente remover este aluno?');
-        result$.asObservable()
+        const event$ = this.alertModalService.showConfirmModal('Confirmação', 'Quer realmente remover este evento?');
+        event$.asObservable()
             .pipe(
                 take(1),
-                switchMap(result => result ? this.studentsService.delete(id) : EMPTY)
+                switchMap(event => event ? this.eventsService.delete(id) : EMPTY)
             )
             .subscribe({
                 next: success => {
@@ -109,7 +109,7 @@ export class StudentsListComponent implements OnInit {
     }
 
     // onConfirmDelete() {
-    //     this.studentsService.delete(this.selectedStudent).subscribe({
+    //     this.eventsService.delete(this.selectedEvent).subscribe({
     //         next: success => {
     //             // this.onRefresh();
     //             // this.modalRef?.hide(); Não precisa mais. É um método do showConfirm.

@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
+
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
     { 
         path: 'students',
         loadChildren: () => import('./students/students.module').then(mod => mod.StudentsModule)
     },
-    { path: '', pathMatch: 'full', redirectTo: 'students'}
+    {
+        path: 'events',
+        loadChildren: () => import('./events/events.module').then(mod => mod.EventsModule)
+    },
+    { path: '', pathMatch: 'full', redirectTo: 'students'},
+    { path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

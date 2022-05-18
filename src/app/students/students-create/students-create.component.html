@@ -42,7 +42,7 @@
     </div>
 
     <div class="col-md-6">
-        <label for="grade" class="form-label mt-3">CPF</label>
+        <label for="grade" class="form-label mt-3">Série/Turma</label>
         <input type="text" class="form-control" id="grade" placeholder="Série/Turma do Aluno" formControlName="grade"
             [ngClass]="{ 'is-invalid': submitted && hasError('grade')}">
         <div class="invalid-feedback" *ngIf="hasError('grade')">

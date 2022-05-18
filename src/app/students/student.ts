@@ -6,4 +6,5 @@ export interface Student {
     grade: string;
     gender: string;
     cpf: number;
+    events: number[];
 }
