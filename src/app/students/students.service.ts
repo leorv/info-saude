@@ -15,9 +15,9 @@ export class StudentsService {
 
     getStudents(params?: { search: string, fields: string }): Observable<Student[]> {
         if (params) {
-            return this.http.get<Student[]>(this.API, { params }).pipe(take(1));
+            return this.http.get<Student[]>(this.API, { params });
         } else {
-            return this.http.get<Student[]>(this.API).pipe(take(1));
+            return this.http.get<Student[]>(this.API);
         }
     }
 
@@ -31,5 +31,9 @@ export class StudentsService {
 
     updateStudent(student: Student) {
         return this.http.put(`${this.API}/${student.id}`, student).pipe(take(1));
+    }
+
+    delete(id: number){
+        return this.http.delete(`${this.API}/${id}`).pipe(take(1));
     }
 }

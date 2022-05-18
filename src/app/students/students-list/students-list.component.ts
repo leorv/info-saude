@@ -1,7 +1,9 @@
+import { BsModalRef } from 'ngx-bootstrap/modal';
+import { AlertModalService } from './../../shared/alert-modal.service';
 import { Student } from './../student';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, map, Observable, switchMap, tap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, EMPTY, filter, map, Observable, switchMap, take, tap } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsService } from '../students.service';
 
@@ -18,10 +20,18 @@ export class StudentsListComponent implements OnInit {
 
     readonly fields: string = 'id, name, lastName, grade';
 
+    // delete Modal
+    modalRef?: BsModalRef;
+    message?: string;
+    selectedStudent: number = 0;
+
+    @ViewChild('deleteModal') deleteModal: any;
+
     constructor(
         private studentsService: StudentsService,
         private router: Router,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private alertModalService: AlertModalService
     ) { }
 
     ngOnInit(): void {
@@ -71,5 +81,43 @@ export class StudentsListComponent implements OnInit {
 
     // onEditStudent(id: number){
     //     this.router.navigate(['edit', id], { relativeTo: this.route});
+    // }
+
+    onDelete(id: number) {
+        // this.cursoSelecionado = id;
+        // this.modalRef = this.modalService.show(this.deleteModal, { class: 'modal-sm' });
+        const result$ = this.alertModalService.showConfirmModal('Confirmação', 'Quer realmente remover este aluno?');
+        result$.asObservable()
+            .pipe(
+                take(1),
+                switchMap(result => result ? this.studentsService.delete(id) : EMPTY)
+            )
+            .subscribe({
+                next: success => {
+                    // this.onRefresh();
+                    this.modalRef?.hide();
+                },
+                error: error => {
+                    this.alertModalService.showAlertDanger('Erro ao remover o curso.');
+                    this.modalRef?.hide();
+                }
+            })
+    }
+
+    // onConfirmDelete() {
+    //     this.studentsService.delete(this.selectedStudent).subscribe({
+    //         next: success => {
+    //             // this.onRefresh();
+    //             // this.modalRef?.hide(); Não precisa mais. É um método do showConfirm.
+    //         },
+    //         error: error => {
+    //             this.alertModalService.showAlertDanger('Erro ao remover o curso.');
+    //             // this.modalRef?.hide();
+    //         }
+    //     })
+    // }
+
+    // onDeclineDelete() {
+    //     this.modalRef?.hide();
     // }
 }

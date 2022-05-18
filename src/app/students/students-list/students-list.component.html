@@ -45,7 +45,7 @@
                         <button class="btn btn-outline-secondary" [routerLink]="['edit', result.id]">Editar</button>
                     </td>
                     <td>
-                        <button class="btn btn-outline-danger">Excluir</button>
+                        <button class="btn btn-outline-danger" (click)="onDelete(result.id)">Excluir</button>
                     </td>
                 </tr>
             </tbody>
@@ -53,3 +53,11 @@
 
     </div>
 </div>
+
+<!-- <ng-template #deleteModal>
+    <div class="modal-body text-center">
+        <p>Quer realmente remover este aluno?</p>
+        <button type="button" class="btn btn-default" (click)="onConfirmDelete()">Sim</button>
+        <button type="button" class="btn btn-primary" (click)="onDeclineDelete()">Não</button>
+    </div>
+</ng-template> -->
