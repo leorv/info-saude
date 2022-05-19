@@ -1,1 +1,45 @@
-<p>vaccines-list works!</p>
+<div class="container search-table">
+    <div class="search-box">
+        <div class="row">
+            <div class="col-md-9">
+                <input type="text" id="myInput" class="form-control" placeholder="Pesquisar vacinas"
+                    [formControl]="queryField">
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-lg btn-success" (click)="onSearch()">
+                    Pesquisar
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="search-list">
+        <h3>{{total}} vacinas encontradas</h3>
+        <table class="table" id="myTable">
+            <thead>
+                <tr>
+                    <th>Vacina</th>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let vaccine of vaccines$ | async">
+                    <td>{{vaccine.name}}</td>
+                    <td>{{vaccine.description}}</td>
+                    <td>{{vaccine.date}}</td>
+                    <th><button class="btn btn-outline-secondary" [routerLink]="['details', vaccine.id]">Detalhes</button>
+                    </th>
+                    <td>
+                        <button class="btn btn-outline-secondary" [routerLink]="['edit', vaccine.id]">Editar</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="onDelete(vaccine.id)">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

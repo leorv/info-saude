@@ -101,7 +101,7 @@ export class EventsListComponent implements OnInit {
                     this.modalRef?.hide();
                 },
                 error: error => {
-                    this.alertModalService.showAlertDanger('Erro ao remover o curso.');
+                    this.alertModalService.showAlertDanger('Erro ao remover o evento.');
                     this.modalRef?.hide();
                 }
             })

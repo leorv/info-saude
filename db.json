@@ -13,7 +13,7 @@
       "name": "Jean Grey",
       "birthDate": "07/11/1965",
       "grade": "7a Série",
-      "gender": "F",    
+      "gender": "F",
       "cpf": 39658221017
     },
     {
@@ -78,5 +78,6 @@
       "studentId": 2,
       "id": 5
     }
-  ]
+  ],
+  "vaccines": []
 }
