@@ -1,60 +1,82 @@
 {
-    "students": [
-        {
-            "id": 1,
-            "name": "Ciclope",
-            "gender": "M",
-            "birthDate": "1963-01-17T03:00:00.000Z",
-            "grade": "7a Série",
-            "cpf": ""
-        },
-        {
-            "id": 2,
-            "name": "Jean Grey",
-            "birthDate": "07/11/1965",
-            "grade": "7a Série",
-            "gender": "F",
-            "cpf": 39658221017
-        },
-        {
-            "id": 3,
-            "name": "Henry Hank McCoy (Fera)",
-            "birthDate": "25/05/1958",
-            "grade": "7a Série",
-            "gender": "M",
-            "cpf": 19045967030
-        },
-        {
-            "id": 4,
-            "name": "Robert Drake (Homem de Gelo)",
-            "birthDate": "08/02/1961",
-            "grade": "7a Série",
-            "gender": "M",
-            "cpf": 40759216037
-        },
-        {
-            "id": 5,
-            "name": "Warren Kenneth Worthington III",
-            "birthDate": "28/04/1966",
-            "grade": "7a Série",
-            "gender": "M",
-            "cpf": 49842867099
-        }
-    ],
-    "events": [
-        {
-            "id": 1,
-            "type": "DB",
-            "description": "doença grave. aluno afastado.",
-            "date": "22/05/2021",
-            "studentId": "1"
-        },
-        {
-            "id": 2,
-            "type": "DP",
-            "description": "depressão.",
-            "date": "22/05/2021",
-            "studentId": "2"
-        }
-    ]
+  "students": [
+    {
+      "id": 1,
+      "name": "Ciclope",
+      "gender": "M",
+      "birthDate": "1963-01-17T03:00:00.000Z",
+      "grade": "7a Série",
+      "cpf": ""
+    },
+    {
+      "id": 2,
+      "name": "Jean Grey",
+      "birthDate": "07/11/1965",
+      "grade": "7a Série",
+      "gender": "F",    
+      "cpf": 39658221017
+    },
+    {
+      "id": 3,
+      "name": "Henry Hank McCoy (Fera)",
+      "birthDate": "25/05/1958",
+      "grade": "7a Série",
+      "gender": "M",
+      "cpf": 19045967030
+    },
+    {
+      "id": 4,
+      "name": "Robert Drake (Homem de Gelo)",
+      "birthDate": "08/02/1961",
+      "grade": "7a Série",
+      "gender": "M",
+      "cpf": 40759216037
+    },
+    {
+      "id": 5,
+      "name": "Warren Kenneth Worthington III",
+      "birthDate": "28/04/1966",
+      "grade": "7a Série",
+      "gender": "M",
+      "cpf": 49842867099
+    },
+    {
+      "id": 6,
+      "name": "leo",
+      "gender": "M",
+      "birthDate": "2022-05-19T00:32:54.434Z",
+      "grade": "xcsa",
+      "cpf": "11110"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "type": "DB",
+      "description": "doença grave. aluno afastado.",
+      "date": "22/05/2021",
+      "studentId": "1"
+    },
+    {
+      "id": 2,
+      "type": "DP",
+      "description": "depressão.",
+      "date": "22/05/2021",
+      "studentId": "2"
+    },
+    {
+      "id": 4,
+      "type": "Doenças bacterianas",
+      "description": "cdscdscds",
+      "date": "2022-05-03T00:40:45.000Z",
+      "studentId": 6
+    },
+    {
+      "type": "Doenças bacterianas",
+      "description": "sdcsdcdscds",
+      "date": "2022-05-03T00:42:05.000Z",
+      "studentId": 2,
+      "id": 5
+    }
+  ]
 }

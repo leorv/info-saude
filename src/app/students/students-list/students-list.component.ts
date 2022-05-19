@@ -41,14 +41,15 @@ export class StudentsListComponent implements OnInit {
     onRefresh() {
         this.results$ = this.queryField.valueChanges
             .pipe(
-                map(value => value.trim()),
+                map((value: string) => {
+                    return value.trim();
+                }),
                 filter(value => value.length > 1),
-                debounceTime(400),
+                debounceTime(2000),
                 distinctUntilChanged(),
                 // tap(value => console.log(value)),
                 switchMap(value => this.studentsService.getStudents({
-                    search: value,
-                    fields: this.fields
+                    name: value
                 })),
                 tap((res: Student[]) => this.total = res.length)
             );

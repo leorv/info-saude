@@ -41,14 +41,13 @@ export class EventsListComponent implements OnInit {
     onRefresh() {
         this.events$ = this.queryField.valueChanges
             .pipe(
-                map(value => value.trim()),
+                map((value: string) => value.trim()),
                 filter(value => value.length > 1),
-                debounceTime(400),
+                debounceTime(2000),
                 distinctUntilChanged(),
                 // tap(value => console.log(value)),
                 switchMap(value => this.eventsService.getEvents({
-                    search: value,
-                    fields: this.fields
+                    description: value
                 })),
                 tap((res: Event[]) => this.total = res.length)
             );

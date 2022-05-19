@@ -10,6 +10,7 @@ import { StudentsCreateComponent } from './students-create/students-create.compo
 import { StudentsDetailsComponent } from './students-details/students-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentsEditComponent } from './students-edit/students-edit.component';
+import { EventsModule } from '../events/events.module';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { StudentsEditComponent } from './students-edit/students-edit.component';
         StudentsListComponent,
         StudentsCreateComponent,
         StudentsDetailsComponent,
-        StudentsEditComponent,
+        StudentsEditComponent
     ],
     imports: [
         CommonModule,
@@ -25,6 +26,7 @@ import { StudentsEditComponent } from './students-edit/students-edit.component';
         ReactiveFormsModule,
         BsDatepickerModule.forRoot(),
         TabsModule.forRoot(),
+        EventsModule
     ]
 })
 export class StudentsModule { }

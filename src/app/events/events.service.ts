@@ -13,7 +13,7 @@ export class EventsService {
 
     constructor(private http: HttpClient) { }
 
-    getEvents(params?: { search: string, fields: string }): Observable<Event[]> {
+    getEvents(params?: { description: string }): Observable<Event[]> {
         if (params) {
             return this.http.get<Event[]>(this.API, { params });
         } else {
@@ -23,6 +23,10 @@ export class EventsService {
 
     getEventsById(id: number): Observable<Event> {
         return this.http.get<Event>(`${this.API}/${id}`).pipe(take(1));
+    }
+
+    getEventsByStudentId(studentId: number): Observable<Event[]> {
+        return this.http.get<Event[]>(`${this.API}`, { params: { studentId: studentId } }).pipe(take(1));
     }
 
     createEvent(event: Event) {

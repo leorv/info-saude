@@ -14,6 +14,8 @@ export class StudentsDetailsComponent implements OnInit {
 
     student: Student = { id: 0, name: '', gender: '', birthDate: new Date, grade: '', cpf: 0, events: []};
 
+    showEvents: boolean = false;
+
     constructor(
         private route: ActivatedRoute,
         private service: StudentsService
@@ -26,7 +28,11 @@ export class StudentsDetailsComponent implements OnInit {
                 return id;
             }),
             switchMap((id: number) => this.service.getStudentsById(id))
-        ).subscribe((student: Student) => this.student = student);
+        ).subscribe((student: Student) => {
+            this.student = student;
+            console.log(this.student);
+            this.showEvents = true;
+        });
     }
 
 }

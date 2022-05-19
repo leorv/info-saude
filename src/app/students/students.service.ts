@@ -13,7 +13,7 @@ export class StudentsService {
 
     constructor(private http: HttpClient) { }
 
-    getStudents(params?: { search: string, fields: string }): Observable<Student[]> {
+    getStudents(params?: { name: string }): Observable<Student[]> {
         if (params) {
             return this.http.get<Student[]>(this.API, { params });
         } else {

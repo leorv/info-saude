@@ -1,1 +1,21 @@
-<p>event-details works!</p>
+<div class="container">
+    <div class="col-sm-12">
+        <label>Tipo de evento</label>
+        <p>{{ eventType }}</p>
+    </div>
+    <div class="col-sm-12">
+        <label>descrição</label>
+        <p>{{ event.description }}</p>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <label>Aluno Id</label>
+        <p>{{ event.studentId }}</p>
+    </div>
+    <div class="col-sm-12 col-md-6">
+        <label>Data</label>
+        <p>{{ event.date }}</p>
+    </div>
+    <div>
+        <button class="btn btn-outline-primary" (click)="onReturn()" >Voltar</button>
+    </div>
+</div>

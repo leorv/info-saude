@@ -9,6 +9,7 @@ import { EventEditComponent } from './event-edit/event-edit.component';
 import { EventsRoutingModule } from './events-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { EventListByStudentComponent } from './event-list-by-student/event-list-by-student.component';
 
 
 @NgModule({
@@ -16,13 +17,18 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
         EventsListComponent,
         EventCreateComponent,
         EventDetailsComponent,
-        EventEditComponent
+        EventEditComponent,
+        EventListByStudentComponent
     ],
     imports: [
         CommonModule,
         EventsRoutingModule,
         ReactiveFormsModule,
         BsDatepickerModule.forRoot(),
+    ],
+    exports: [
+        EventCreateComponent,
+        EventListByStudentComponent
     ]
 })
 export class EventsModule { }
