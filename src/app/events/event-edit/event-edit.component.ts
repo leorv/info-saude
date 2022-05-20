@@ -1,4 +1,6 @@
-import { Router } from '@angular/router';
+import { Student } from 'src/app/students/student';
+import { StudentsService } from './../../students/students.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AlertModalService } from './../../shared/alert-modal.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,6 +9,7 @@ import { Event } from '../event';
 import { EventsService } from '../events.service';
 import { Location } from '@angular/common';
 import { EventTypes2LabelMapping, EventTypesEnum } from '../event-types.enum';
+import { map, switchMap, tap, take } from 'rxjs';
 
 @Component({
     selector: 'app-event-edit',
@@ -16,8 +19,8 @@ import { EventTypes2LabelMapping, EventTypesEnum } from '../event-types.enum';
 })
 export class EventEditComponent implements OnInit {
 
-    @Input('studentName') studentName: string = '';
-    @Input('event') event: Event = {id: 0, type: '', description: '', date: new Date, studentId: 0};
+    @Input('studentName') studentName?: string = '';
+    @Input('event') event?: Event = {id: 0, type: '', description: '', date: new Date, studentId: 0};
 
     eventTypes2LabelMapping: Record<EventTypesEnum, string> = EventTypes2LabelMapping;
     eventTypes: EventTypesEnum[] = Object.values(EventTypesEnum);
@@ -29,6 +32,7 @@ export class EventEditComponent implements OnInit {
         date: [Date, Validators.required],
         studentId: 0
     });
+
     submitted: boolean = false;
 
     constructor(
@@ -36,17 +40,49 @@ export class EventEditComponent implements OnInit {
         private modal: AlertModalService,
         private location: Location,
         private formBuilder: FormBuilder,
-        private router: Router
+        private router: Router,
+        private route: ActivatedRoute,
+        private studentService: StudentsService
     ) { }
 
     ngOnInit(): void {
-        this.form.setValue({
-            id: this.event.id,
-            type: this.event.type,
-            description: this.event.description,
-            date: this.event.date,
-            studentId: this.event.studentId
-        })
+        if (this.event?.id != 0){
+            this.form.setValue({
+                id: this.event?.id,
+                type: this.event?.type,
+                description: this.event?.description,
+                date: this.event?.date,
+                studentId: this.event?.studentId
+            })
+        } else {
+            this.route.params.pipe(
+                map((params: any) => {
+                    const id = params['id'];
+                    return id;
+                }),
+                switchMap((id) => {
+                    return this.service.getEventsById(id);
+                }),
+                tap((event: Event) => {
+                    this.form.setValue({
+                        id: event.id,
+                        type: event.type,
+                        description: event.description,
+                        date: event.date,
+                        studentId: event.studentId
+                    });
+                }),
+                switchMap((event: Event) => {
+                    return this.studentService.getStudentsById(event.studentId)
+                }),
+                take(1)
+            ).subscribe({
+                next: (student: Student) => {
+                    this.studentName = student.name;
+                }
+            })
+        }
+        
     }
 
     onSubmit() {
