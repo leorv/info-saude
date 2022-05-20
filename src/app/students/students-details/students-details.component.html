@@ -24,13 +24,18 @@
             </div>
         </tab>
         <tab heading="Eventos">
-            <div class="container mb-2">
-                <app-event-create *ngIf="showEvents" [studentId]="student.id"></app-event-create>
-            </div>
+            <section>
+                <div><h2>Criar novo evento</h2></div>
+                <div class="container mb-2">
+                    <app-event-create *ngIf="showEvents" [studentId]="student.id"></app-event-create>
+                </div>
+            </section>
             <hr>
-            <div>
-                <app-event-list-by-student *ngIf="showEvents" [studentId]="student.id" [studentName]="student.name"></app-event-list-by-student>
-            </div>
+            <section>
+                <h2>Lista de eventos</h2>
+                <app-event-list-by-student *ngIf="showEvents" [studentId]="student.id" [studentName]="student.name">
+                </app-event-list-by-student>
+            </section>
         </tab>
         <tab heading="Vacinas">
 

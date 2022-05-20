@@ -29,10 +29,8 @@
                     <td>{{event.type}}</td>
                     <td>{{event.description}}</td>
                     <td>{{event.date}}</td>
-                    <th><button class="btn btn-outline-secondary"
-                            [routerLink]="['details', event.id]">Detalhes</button></th>
                     <td>
-                        <button class="btn btn-outline-secondary" [routerLink]="['edit', event.id]">Editar</button>
+                        <button class="btn btn-outline-secondary" [routerLink]="['details', event.id]">Detalhes</button>
                     </td>
                     <td>
                         <button class="btn btn-outline-danger" (click)="onDelete(event.id)">Excluir</button>

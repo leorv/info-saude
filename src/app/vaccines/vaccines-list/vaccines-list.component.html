@@ -18,8 +18,6 @@
             <thead>
                 <tr>
                     <th>Vacina</th>
-                    <th>Descrição</th>
-                    <th>Data</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -27,8 +25,6 @@
             <tbody>
                 <tr *ngFor="let vaccine of vaccines$ | async">
                     <td>{{vaccine.name}}</td>
-                    <td>{{vaccine.description}}</td>
-                    <td>{{vaccine.date}}</td>
                     <th><button class="btn btn-outline-secondary" [routerLink]="['details', vaccine.id]">Detalhes</button>
                     </th>
                     <td>

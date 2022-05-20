@@ -1,1 +1,47 @@
-<p>event-edit works!</p>
+<form class="g-2 gy-2 row" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2>Editar evento</h2>
+    <div>
+        <p>Aluno: {{ studentName }} </p>
+    </div>
+    <div class="col-md-6">
+        <label for="type" class="form-label mt-3">Tipo</label>
+        <select type="text" class="form-select" id="type" name="type" formControlName="type">
+            <option *ngFor="let type of eventTypes" [value]="type">{{ eventTypes2LabelMapping[type] }}</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="hasError('type')">
+            Informe um tipo para o evento.
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <label for="description" class="form-label mt-3">Descrição</label>
+        <input type="text" class="form-control" id="description" placeholder="Descrição do Evento"
+            formControlName="description" [ngClass]="{ 'is-invalid': submitted && hasError('description')}">
+        <div class="invalid-feedback" *ngIf="hasError('description')">
+            Informe uma descrição para o evento.
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
+            <label for="date" class="form-label mt-3">Data</label>
+            <input id="date" type="text" placeholder="Datepicker" formControlName="date" class="form-control"
+                bsDatepicker>
+            <div class="invalid-feedback" *ngIf="hasError('date')">
+                Informe uma data.
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">
+            Salvar
+        </button>
+        <button (click)="onCancel()" class="btn btn-secondary">
+            Limpar
+        </button>
+        <button (click)="onReturn()" class="btn btn-secondary">
+            Voltar
+        </button>
+    </div>
+</form>

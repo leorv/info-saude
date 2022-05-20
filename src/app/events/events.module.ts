@@ -28,6 +28,7 @@ import { EventListByStudentComponent } from './event-list-by-student/event-list-
     ],
     exports: [
         EventCreateComponent,
+        EventEditComponent,
         EventListByStudentComponent
     ]
 })
