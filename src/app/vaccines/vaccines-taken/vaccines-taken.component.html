@@ -1,0 +1,34 @@
+<div class="card">
+    <div class="card-header">
+        <p> Lista de vacinação de {{ studentName }}. </p>
+    </div>
+    <div class="card-body">
+        <table class="table table-success table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Data</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let vaccine of vaccinesTaken$ | async">
+                    <th scope="row">{{ vaccine.id }}</th>
+                    <td> {{ vaccine.name }} </td>
+                    <td> {{ vaccine.description }}</td>
+                    <td> {{ vaccine.date }}</td>
+                    <td>
+                        <button class="btn btn-outline-secondary" (click)="onEdit(vaccine.id)">Editar</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-danger" (click)="onDelete(vaccine.id)">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

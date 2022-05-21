@@ -8,6 +8,9 @@ import { VaccinesListByStudentComponent } from './vaccines-list-by-student/vacci
 import { VaccinesEditComponent } from './vaccines-edit/vaccines-edit.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { VaccinesCreateComponent } from './vaccines-create/vaccines-create.component';
+import { VaccinesTakenComponent } from './vaccines-taken/vaccines-taken.component';
+import { VaccinesTakenEditComponent } from './vaccines-taken-edit/vaccines-taken-edit.component';
+import { VaccinesTakenCreateComponent } from './vaccines-taken-create/vaccines-taken-create.component';
 
 
 
@@ -16,13 +19,20 @@ import { VaccinesCreateComponent } from './vaccines-create/vaccines-create.compo
         VaccinesListComponent,
         VaccinesListByStudentComponent,
         VaccinesEditComponent,
-        VaccinesCreateComponent
+        VaccinesCreateComponent,
+        VaccinesTakenComponent,
+        VaccinesTakenEditComponent,
+        VaccinesTakenCreateComponent
     ],
     imports: [
         CommonModule,
         VaccinesRoutingModule,
         ReactiveFormsModule,
         BsDatepickerModule.forRoot(),
+    ],
+    exports: [
+        VaccinesTakenComponent,
+        VaccinesTakenCreateComponent
     ]
 })
 export class VaccinesModule { }

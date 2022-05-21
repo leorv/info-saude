@@ -15,6 +15,7 @@ export class StudentsDetailsComponent implements OnInit {
     student: Student = { id: 0, name: '', gender: '', birthDate: new Date, grade: '', cpf: 0, events: []};
 
     showEvents: boolean = false;
+    showVaccinesTaken: boolean = false;
 
     constructor(
         private route: ActivatedRoute,
@@ -31,8 +32,10 @@ export class StudentsDetailsComponent implements OnInit {
         ).subscribe((student: Student) => {
             this.student = student;
             console.log(this.student);
-            this.showEvents = true;
+            this.showEvents = true
+            this.showVaccinesTaken = true;
         });
     }
+    
 
 }

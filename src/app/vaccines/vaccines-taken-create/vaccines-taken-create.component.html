@@ -1,0 +1,46 @@
+<form class="g-2 gy-2 row" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+        <p>Aluno: {{ studentName }} </p>
+    </div>
+    <div class="col-md-12">
+        <label for="name" class="form-label mt-3">Vacina</label>
+        <select type="text" class="form-select" id="name" name="name" formControlName="name">
+            <option *ngFor="let vaccine of vaccines$ | async" [value]="vaccine.name">{{ vaccine.name }}</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="hasError('name')">
+            Selecione uma vacina.
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <label for="description" class="form-label mt-3">Descrição da vacinação</label>
+        <input type="text" class="form-control" id="description" placeholder="Descrição da vacinação"
+            formControlName="description" [ngClass]="{ 'is-invalid': submitted && hasError('description')}">
+        <div class="invalid-feedback" *ngIf="hasError('description')">
+            Informe uma descrição para a vacinação.
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
+            <label for="date" class="form-label mt-3">Data da aplicação</label>
+            <input id="date" type="text" placeholder="Datepicker" formControlName="date" class="form-control"
+                bsDatepicker>
+            <div class="invalid-feedback" *ngIf="hasError('date')">
+                Informe uma data para a aplicação da vacina.
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">
+            Salvar
+        </button>
+        <button class="btn btn-primary">
+            Limpar preenchimento
+        </button>
+        <button class="btn btn-primary">
+            Voltar
+        </button>
+    </div>
+</form>

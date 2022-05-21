@@ -11,6 +11,7 @@ import { StudentsDetailsComponent } from './students-details/students-details.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentsEditComponent } from './students-edit/students-edit.component';
 import { EventsModule } from '../events/events.module';
+import { VaccinesModule } from '../vaccines/vaccines.module';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { EventsModule } from '../events/events.module';
         ReactiveFormsModule,
         BsDatepickerModule.forRoot(),
         TabsModule.forRoot(),
-        EventsModule
+        EventsModule,
+        VaccinesModule
     ]
 })
 export class StudentsModule { }
