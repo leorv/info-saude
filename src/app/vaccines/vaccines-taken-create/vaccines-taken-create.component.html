@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <label for="name" class="form-label mt-3">Vacina</label>
         <select type="text" class="form-select" id="name" name="name" formControlName="name">
-            <option *ngFor="let vaccine of vaccines$ | async" [value]="vaccine.name">{{ vaccine.name }}</option>
+            <option *ngFor="let vaccine of vaccines$ | async" [value]="vaccine.name" (click)="selectVaccine(vaccine)">{{ vaccine.name }}</option>
         </select>
         <div class="invalid-feedback" *ngIf="hasError('name')">
             Selecione uma vacina.

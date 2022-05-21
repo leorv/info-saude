@@ -35,7 +35,7 @@ export class VaccinesCreateComponent implements OnInit {
         this.submitted = true;
         if (this.form.valid) {
 
-            let msgSuccess = 'Aluno criado com sucesso!';
+            let msgSuccess = 'Vacina criada com sucesso!';
             let msgError = 'Erro ao tentar gravar as informações.';
 
             this.service.createVaccine(this.form.value).subscribe({

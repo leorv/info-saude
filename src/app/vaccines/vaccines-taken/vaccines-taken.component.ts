@@ -5,6 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { VaccinesTakenService } from '../vaccines-taken.service';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 // export interface VaccineTaken {
 //     id: number,
@@ -33,7 +34,8 @@ export class VaccinesTakenComponent implements OnInit {
     constructor(
         private vaccinesTakenService: VaccinesTakenService,
         private alertModalService: AlertModalService,
-        private router: Router
+        private router: Router,
+        private location: Location
     ) { }
 
     ngOnInit(): void {
@@ -55,6 +57,7 @@ export class VaccinesTakenComponent implements OnInit {
                 next: success => {
                     // this.onRefresh();
                     this.modalRef?.hide();
+                    this.location.back();
                 },
                 error: error => {
                     this.alertModalService.showAlertDanger('Erro ao remover a vacinação.');

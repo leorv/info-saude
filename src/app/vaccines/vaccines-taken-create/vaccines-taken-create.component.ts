@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { VaccinesTakenService } from './../vaccines-taken.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Vaccine } from '../vaccine';
-import { Observable } from 'rxjs';
+import { Observable, map, switchMap } from 'rxjs';
 import { Location } from '@angular/common';
 import { VaccinesService } from '../vaccines.service';
 
@@ -20,7 +20,8 @@ import { VaccinesService } from '../vaccines.service';
 @Component({
     selector: 'app-vaccines-taken-create',
     templateUrl: './vaccines-taken-create.component.html',
-    styleUrls: ['./vaccines-taken-create.component.css']
+    styleUrls: ['./vaccines-taken-create.component.css'],
+    preserveWhitespaces: true
 })
 export class VaccinesTakenCreateComponent implements OnInit {
 
@@ -28,6 +29,7 @@ export class VaccinesTakenCreateComponent implements OnInit {
     @Input() studentName: string = '';
 
     vaccines$: Observable<Vaccine[]> = new Observable();
+    selectedVaccine: Vaccine = {id: 0, name: ''};
 
     form: FormGroup = new FormGroup({});
     submitted: boolean = false;
@@ -44,6 +46,8 @@ export class VaccinesTakenCreateComponent implements OnInit {
     ngOnInit(): void {
         this.form = this.formBuilder.group({
             id: 0,
+            vaccineId: 0,
+            studentId: 0,
             name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(128)]],
             description: ['', Validators.required],
             date: [new Date, Validators.required]
@@ -62,6 +66,10 @@ export class VaccinesTakenCreateComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
+        this.form.patchValue({
+            studentId: this.studentId,
+            vaccineId: this.selectedVaccine.id
+        });
         if (this.form.valid) {
 
             let msgSuccess = 'Informações atualizadas com sucesso!';
@@ -81,6 +89,12 @@ export class VaccinesTakenCreateComponent implements OnInit {
 
     hasError(field: string) {
         return this.form.get(field)?.errors;
+    }
+
+    selectVaccine(vaccine: Vaccine){
+        console.log('selecionou a vacina: ', vaccine);
+        this.selectedVaccine = vaccine;
+        console.log('vacina selecionada id: ', this.selectedVaccine.id);
     }
 
 }
