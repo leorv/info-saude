@@ -4,11 +4,10 @@ import { Observable, take, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Vaccine } from './vaccine';
 
-
 @Injectable({
     providedIn: 'root'
 })
-export class VaccineService {
+export class VaccinesService {
 
     private readonly API: string = `${environment.API}vaccines`
 
@@ -17,12 +16,13 @@ export class VaccineService {
     getVaccines(params?: { name: string }): Observable<Vaccine[]> {
         if (params) {
             return this.http.get<Vaccine[]>(this.API, { params });
+        } else {
+            return this.http.get<Vaccine[]>(this.API);
         }
-        return this.http.get<Vaccine[]>(this.API);
     }
 
-    getVaccinesByStudentId(studentId: number): Observable<Vaccine[]> {
-        return this.http.get<Vaccine[]>(`${this.API}`, { params: { studentId: studentId } }).pipe(take(1));
+    getVaccinesById(id: number): Observable<Vaccine> {
+        return this.http.get<Vaccine>(`${this.API}/${id}`).pipe(take(1));
     }
 
     createVaccine(vaccine: Vaccine) {

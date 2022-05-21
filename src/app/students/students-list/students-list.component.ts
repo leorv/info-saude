@@ -35,7 +35,8 @@ export class StudentsListComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.onRefresh();
+        this.results$ = this.studentsService.getStudents();
+        // this.onRefresh();
     }
 
     onRefresh() {

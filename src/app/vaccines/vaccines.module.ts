@@ -7,6 +7,7 @@ import { VaccinesListComponent } from './vaccines-list/vaccines-list.component';
 import { VaccinesListByStudentComponent } from './vaccines-list-by-student/vaccines-list-by-student.component';
 import { VaccinesEditComponent } from './vaccines-edit/vaccines-edit.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { VaccinesCreateComponent } from './vaccines-create/vaccines-create.component';
 
 
 
@@ -14,7 +15,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     declarations: [
         VaccinesListComponent,
         VaccinesListByStudentComponent,
-        VaccinesEditComponent
+        VaccinesEditComponent,
+        VaccinesCreateComponent
     ],
     imports: [
         CommonModule,

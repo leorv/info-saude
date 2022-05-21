@@ -1,10 +1,9 @@
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AlertModalService } from './../../shared/alert-modal.service';
 import { Vaccine } from './../vaccine';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, EMPTY, filter, map, Observable, switchMap, take, tap } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
 import { VaccineService } from '../vaccine.service';
 
 @Component({
@@ -29,13 +28,14 @@ export class VaccinesListComponent implements OnInit {
 
     constructor(
         private vaccineService: VaccineService,
-        private router: Router,
-        private route: ActivatedRoute,
         private alertModalService: AlertModalService
     ) { }
 
     ngOnInit(): void {
-        this.onRefresh();
+        this.vaccines$ = this.vaccineService.getVaccines();
+        // setTimeout(() => {
+        //     this.onRefresh();
+        // }, 1000);
     }
 
     onRefresh() {

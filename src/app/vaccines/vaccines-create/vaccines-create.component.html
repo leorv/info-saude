@@ -1,8 +1,10 @@
-
-<form class="row g-3 needs-validation" novalidate [formGroup]="form">
-    <div class="col-md-12">
-        <label for="nome" class="form-label mt-3">Nome da vacina</label>
-        <input type="text" class="form-control" id="nome" placeholder="Nome da vacina " formControlName="name"
+<form class="g-2 gy-2 row" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+        <h2>Nova vacina</h2>
+    </div>
+    <div class="col-md-6">
+        <label for="nome" class="form-label mt-3">Nome</label>
+        <input type="text" class="form-control" id="nome" placeholder="Nome da Vacina" formControlName="name"
             [ngClass]="{ 'is-invalid': submitted && hasError('name')}">
         <div class="invalid-feedback" *ngIf="hasError('name')">
             Informe um nome para a vacina.
@@ -10,7 +12,7 @@
     </div>
 
     <div class="col-12">
-        <button class="btn btn-primary" type="submit" (click)="onSubmit()">Salvar</button>
+        <button class="btn btn-primary" type="submit">Salvar</button>
         <button class="btn btn-outline-secondary" type="submit" (click)="onCancel()">Cancelar</button>
         <button class="btn btn-outline-secondary" type="submit" (click)="onReturn()">Retornar</button>
     </div>

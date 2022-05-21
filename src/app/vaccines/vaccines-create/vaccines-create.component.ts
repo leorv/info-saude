@@ -1,23 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertModalService } from 'src/app/shared/alert-modal.service';
-import { StudentsService } from '../students.service';
+import { VaccinesService } from '../vaccines.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-students-create',
-    templateUrl: './students-create.component.html',
-    styleUrls: ['./students-create.component.css']
+    selector: 'app-vaccines-create',
+    templateUrl: './vaccines-create.component.html',
+    styleUrls: ['./vaccines-create.component.css'],
+    preserveWhitespaces: true
 })
-export class StudentsCreateComponent implements OnInit {
+export class VaccinesCreateComponent implements OnInit {
     form: FormGroup = new FormGroup({});
     submitted: boolean = false;
 
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
-        private service: StudentsService,
+        private service: VaccinesService,
         private location: Location,
         private modal: AlertModalService
     ) { }
@@ -25,11 +26,7 @@ export class StudentsCreateComponent implements OnInit {
     ngOnInit(): void {
         this.form = this.formBuilder.group({
             id: 0,
-            name: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(128)]],
-            gender: ["", Validators.required],
-            birthDate: [new Date, Validators.required],
-            grade: ["", Validators.required],
-            cpf: [0] // TODO: Validação para o CPF.
+            name: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(128)]]
         });
 
     }
@@ -41,7 +38,7 @@ export class StudentsCreateComponent implements OnInit {
             let msgSuccess = 'Aluno criado com sucesso!';
             let msgError = 'Erro ao tentar gravar as informações.';
 
-            this.service.createStudent(this.form.value).subscribe({
+            this.service.createVaccine(this.form.value).subscribe({
                 next: success => {
                     this.modal.showAlertSuccess(msgSuccess);
                     this.location.back();

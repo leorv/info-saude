@@ -79,5 +79,18 @@
       "id": 5
     }
   ],
-  "vaccines": []
+  "vaccines": [
+    {
+      "id": 1,
+      "name": "COVID"
+    },
+    {
+      "id": 2,
+      "name": "GRIPE"
+    },
+    {
+      "id": 3,
+      "name": "variola"
+    }
+  ]
 }

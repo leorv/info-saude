@@ -2,8 +2,8 @@
     <div class="col-md-6">
         <label for="nome" class="form-label mt-3">Nome</label>
         <input type="text" class="form-control" id="nome" placeholder="Nome do Aluno" formControlName="name"
-            [ngClass]="{ 'is-invalid': submitted && hasError('nome')}">
-        <div class="invalid-feedback" *ngIf="hasError('nome')">
+            [ngClass]="{ 'is-invalid': submitted && hasError('name')}">
+        <div class="invalid-feedback" *ngIf="hasError('name')">
             Informe um nome para o aluno.
         </div>
     </div>
