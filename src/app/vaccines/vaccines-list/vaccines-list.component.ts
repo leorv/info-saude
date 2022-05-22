@@ -32,25 +32,35 @@ export class VaccinesListComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.vaccines$ = this.vaccineService.getVaccines();
+        this.vaccines$ = this.vaccineService.getVaccines().pipe(
+            tap((res: Vaccine[]) => this.total = res.length)
+        );
         // setTimeout(() => {
         //     this.onRefresh();
         // }, 1000);
     }
 
     onRefresh() {
-        this.vaccines$ = this.queryField.valueChanges
-            .pipe(
-                map((value: string) => value.trim()),
-                filter(value => value.length > 1),
-                debounceTime(2000),
-                distinctUntilChanged(),
-                // tap(value => console.log(value)),
-                switchMap(value => this.vaccineService.getVaccines({
-                    name: value
-                })),
-                tap((res: Vaccine[]) => this.total = res.length)
-            );
+        console.log(this.queryField.value);
+        if (this.queryField.value != null || this.queryField.value != undefined || this.queryField.value != '') {
+            console.log('dentro do if');
+            this.vaccines$ = this.queryField.valueChanges
+                .pipe(
+                    map((value: string) => value.trim()),
+                    filter(value => value.length > 1),
+                    debounceTime(3000),
+                    distinctUntilChanged(),
+                    // tap(value => console.log(value)),
+                    switchMap(value => this.vaccineService.getVaccines({
+                        name: value
+                    })),
+                    tap((res: Vaccine[]) => {
+                        this.total = res.length;
+                        console.log('feita a requisição');
+                    })
+                );
+        }
+
     }
 
     onSearch() {

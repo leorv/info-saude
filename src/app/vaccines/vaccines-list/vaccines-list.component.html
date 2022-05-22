@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-md-9">
                 <input type="text" id="myInput" class="form-control" placeholder="Pesquisar vacinas"
-                    [formControl]="queryField">
+                    [formControl]="queryField" (keydown)="onRefresh()">
             </div>
             <div class="col-md-3">
                 <button class="btn btn-lg btn-success" (click)="onSearch()">
@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="search-list">
-        <h3>{{total}} vacinas encontradas</h3>
+        <p>{{total}} vacinas encontradas</p>
         <table class="table table-success table-striped" id="myTable">
             <thead>
                 <tr>

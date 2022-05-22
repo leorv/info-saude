@@ -49,57 +49,7 @@
       "cpf": "01231321"
     }
   ],
-  "events": [
-    {
-      "id": 2,
-      "type": "DP",
-      "description": "depressão.",
-      "date": "22/05/2021",
-      "studentId": "2"
-    },
-    {
-      "type": "Doenças bacterianas",
-      "description": "sdcsdcdscds",
-      "date": "2022-05-03T00:42:05.000Z",
-      "studentId": 2,
-      "id": 5
-    },
-    {
-      "id": 7,
-      "type": "Covid",
-      "description": "pegou covid",
-      "date": "2022-05-02T16:21:36.000Z",
-      "studentId": 6
-    },
-    {
-      "id": 10,
-      "type": "Doenças genéticas",
-      "description": "csdcsdcsd",
-      "date": "2022-05-03T00:28:17.000Z",
-      "studentId": 1
-    },
-    {
-      "id": 12,
-      "type": "Doenças bacterianas",
-      "description": "cdscssd",
-      "date": "2022-05-03T00:44:27.000Z",
-      "studentId": 1
-    },
-    {
-      "id": 13,
-      "type": "Doenças genéticas",
-      "description": "xsaxsa",
-      "date": "2022-05-03T01:31:46.000Z",
-      "studentId": 1
-    },
-    {
-      "id": 14,
-      "type": "Covid",
-      "description": "xasxsa",
-      "date": "2022-05-03T01:31:46.000Z",
-      "studentId": 1
-    }
-  ],
+  "events": [],
   "vaccines": [
     {
       "id": 1,
@@ -112,23 +62,11 @@
     {
       "id": 4,
       "name": "febre amarela"
-    }
-  ],
-  "vaccinesTaken": [
-    {
-      "id": 1,
-      "studentId": 6,
-      "name": "COVID",
-      "description": "tomou vacina ein",
-      "date": "2022-05-21T22:53:08.306Z"
     },
     {
-      "id": 2,
-      "vaccineId": 2,
-      "studentId": 1,
-      "name": "GRIPE",
-      "description": "cdcsd",
-      "date": "2022-05-22T01:47:52.589Z"
+      "id": 5,
+      "name": "cadadsa"
     }
-  ]
+  ],
+  "vaccinesTaken": []
 }
