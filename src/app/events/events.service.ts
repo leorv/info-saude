@@ -29,6 +29,10 @@ export class EventsService {
         return this.http.get<Event[]>(`${this.API}`, { params: { studentId: studentId } });
     }
 
+    getEventsByType(type: string): Observable<Event[]> {
+        return this.http.get<Event[]>(`${this.API}`, { params: { type: type } });
+    }
+
     createEvent(event: Event): Observable<Event> {
         return this.http.post<Event>(`${this.API}`, event);
     }

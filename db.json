@@ -49,7 +49,99 @@
       "cpf": "01231321"
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "id": 1,
+      "type": "Doenças oncológicas",
+      "description": "cscsd",
+      "date": "2022-04-04T03:00:00.000Z",
+      "studentId": 1
+    },
+    {
+      "id": 2,
+      "type": "Doenças em geral",
+      "description": "cdscdscds",
+      "date": "2022-05-10T14:42:34.000Z",
+      "studentId": 1
+    },
+    {
+      "id": 3,
+      "type": "Doenças oncológicas",
+      "description": "csdcsd",
+      "date": "2022-05-22T14:42:55.705Z",
+      "studentId": 3
+    },
+    {
+      "id": 4,
+      "type": "Gripes e Viroses",
+      "description": "cds",
+      "date": "2022-05-22T14:43:02.038Z",
+      "studentId": 3
+    },
+    {
+      "id": 5,
+      "type": "Gripes e Viroses",
+      "description": "cdscsd",
+      "date": "2022-05-22T14:43:09.419Z",
+      "studentId": 3
+    },
+    {
+      "id": 6,
+      "type": "Gripes e Viroses",
+      "description": "csdcsdcsd",
+      "date": "2022-04-11T03:00:00.000Z",
+      "studentId": 3
+    },
+    {
+      "id": 7,
+      "type": "Gripes e Viroses",
+      "description": "csdcsdcs",
+      "date": "2022-05-22T20:37:25.409Z",
+      "studentId": 1
+    },
+    {
+      "id": 8,
+      "type": "Gripes e Viroses",
+      "description": "scsdcds",
+      "date": "2022-04-04T03:00:00.000Z",
+      "studentId": 1
+    },
+    {
+      "id": 9,
+      "type": "Covid e variações",
+      "description": "cdscdscsd",
+      "date": "2022-05-22T21:10:21.805Z",
+      "studentId": 1
+    },
+    {
+      "id": 10,
+      "type": "Covid e variações",
+      "description": "cdscdscdscds",
+      "date": "2022-03-07T03:00:00.000Z",
+      "studentId": 1
+    },
+    {
+      "id": 11,
+      "type": "Outros",
+      "description": "csdcsdcsd",
+      "date": "2022-05-22T21:26:32.269Z",
+      "studentId": 1
+    },
+    {
+      "id": 12,
+      "type": "Outros",
+      "description": "cscdscds",
+      "date": "2022-05-22T21:26:48.082Z",
+      "studentId": 1
+    },
+    {
+      "id": 13,
+      "type": "Outros",
+      "description": "cdscsd",
+      "date": "2022-04-04T03:00:00.000Z",
+      "studentId": 1
+    }
+  ],
   "vaccines": [
     {
       "id": 1,
@@ -68,5 +160,14 @@
       "name": "cadadsa"
     }
   ],
-  "vaccinesTaken": []
+  "vaccinesTaken": [
+    {
+      "id": 1,
+      "vaccineId": 2,
+      "studentId": 1,
+      "name": "GRIPE",
+      "description": "dfscdscs",
+      "date": "2022-05-22T20:37:25.434Z"
+    }
+  ]
 }
