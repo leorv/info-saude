@@ -1,12 +1,13 @@
 import { take } from 'rxjs';
 import { StudentsService } from './../../students/students.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { AlertModalService } from 'src/app/shared/alert-modal.service';
 import { Router } from '@angular/router';
 import { EventsService } from '../events.service';
 import { EventTypes2LabelMapping, EventTypesEnum } from '../event-types.enum';
+import { Event } from '../event';
 
 // switch (event.type) {
 //     case 'CC':
@@ -50,6 +51,8 @@ import { EventTypes2LabelMapping, EventTypesEnum } from '../event-types.enum';
 export class EventCreateComponent implements OnInit {
 
     @Input('studentId') studentId: number = 0;
+
+    @Output() eventCreated: EventEmitter<any> = new EventEmitter();
 
     eventTypes2LabelMapping: Record<EventTypesEnum, string> = EventTypes2LabelMapping;
     eventTypes: EventTypesEnum[] = Object.values(EventTypesEnum);
@@ -99,9 +102,11 @@ export class EventCreateComponent implements OnInit {
             let msgError = 'Erro ao tentar gravar as informações.';
             
             this.service.createEvent(this.form.value).subscribe({
-                next: success => {
+                next: (success: Event) => {
+                    console.log(success);
                     this.modal.showAlertSuccess(msgSuccess);
-                    this.location.back();
+                    this.eventCreated.emit();
+                    // this.location.back();
                 },
                 error: error => {
                     this.modal.showAlertDanger(msgError);

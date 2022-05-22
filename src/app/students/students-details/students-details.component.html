@@ -27,7 +27,7 @@
             <section>
                 <div><h2>Criar novo evento</h2></div>
                 <div class="container mb-2">
-                    <app-event-create *ngIf="showEvents" [studentId]="student.id"></app-event-create>
+                    <app-event-create (eventCreated)="eventCreated()" *ngIf="showEvents" [studentId]="student.id"></app-event-create>
                 </div>
             </section>
             <hr>

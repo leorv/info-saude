@@ -107,7 +107,7 @@ export class StudentsListComponent implements OnInit {
                     this.alertModalService.showAlertDanger('Erro ao remover o curso.');
                     this.modalRef?.hide();
                 }
-            })
+            });
     }
 
     // onConfirmDelete() {

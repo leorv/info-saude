@@ -51,13 +51,6 @@
   ],
   "events": [
     {
-      "id": 1,
-      "type": "DB",
-      "description": "doença grave. aluno afastado.",
-      "date": "22/05/2021",
-      "studentId": "1"
-    },
-    {
       "id": 2,
       "type": "DP",
       "description": "depressão.",
@@ -72,18 +65,39 @@
       "id": 5
     },
     {
-      "id": 6,
-      "type": "Doenças genéticas",
-      "description": "dautonico",
-      "date": "2022-05-01T15:42:12.000Z",
-      "studentId": 1
-    },
-    {
       "id": 7,
       "type": "Covid",
       "description": "pegou covid",
       "date": "2022-05-02T16:21:36.000Z",
       "studentId": 6
+    },
+    {
+      "id": 10,
+      "type": "Doenças genéticas",
+      "description": "csdcsdcsd",
+      "date": "2022-05-03T00:28:17.000Z",
+      "studentId": 1
+    },
+    {
+      "id": 11,
+      "type": "Gripes",
+      "description": "cccc",
+      "date": "2022-05-02T00:43:48.000Z",
+      "studentId": 1
+    },
+    {
+      "id": 12,
+      "type": "Doenças bacterianas",
+      "description": "cdscssd",
+      "date": "2022-05-03T00:44:27.000Z",
+      "studentId": 1
+    },
+    {
+      "id": 13,
+      "type": "Doenças genéticas",
+      "description": "dddd",
+      "date": "2022-05-03T00:47:30.000Z",
+      "studentId": 1
     }
   ],
   "vaccines": [
@@ -111,14 +125,6 @@
       "name": "COVID",
       "description": "tomou vacina ein",
       "date": "2022-05-21T22:53:08.306Z"
-    },
-    {
-      "id": 2,
-      "vaccineId": 0,
-      "studentId": 1,
-      "name": "GRIPE",
-      "description": "csdcsdcds",
-      "date": "2022-05-21T22:55:37.126Z"
     },
     {
       "id": 3,

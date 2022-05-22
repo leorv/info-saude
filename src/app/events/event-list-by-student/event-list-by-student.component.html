@@ -14,12 +14,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let event of events" >
+                <tr *ngFor="let event of events$ | async" >
                     <th scope="row">{{ event.id }}</th>
                     <td> {{ event.type }} </td>
                     <td> {{ event.description }}</td>
                     <td>
                         <button class="btn btn-outline-secondary" (click)="onEdit(event.id)">Editar</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-secondary" (click)="onDelete(event.id)">Excluir</button>
                     </td>
                 </tr>
             </tbody>

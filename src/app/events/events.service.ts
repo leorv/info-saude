@@ -22,22 +22,22 @@ export class EventsService {
     }
 
     getEventsById(id: number): Observable<Event> {
-        return this.http.get<Event>(`${this.API}/${id}`).pipe(take(1));
+        return this.http.get<Event>(`${this.API}/${id}`);
     }
 
     getEventsByStudentId(studentId: number): Observable<Event[]> {
-        return this.http.get<Event[]>(`${this.API}`, { params: { studentId: studentId } }).pipe(take(1));
+        return this.http.get<Event[]>(`${this.API}`, { params: { studentId: studentId } });
     }
 
-    createEvent(event: Event) {
-        return this.http.post(`${this.API}`, event).pipe(take(1));
+    createEvent(event: Event): Observable<Event> {
+        return this.http.post<Event>(`${this.API}`, event);
     }
 
     updateEvent(event: Event) {
-        return this.http.put(`${this.API}/${event.id}`, event).pipe(take(1));
+        return this.http.put(`${this.API}/${event.id}`, event);
     }
 
     delete(id: number) {
-        return this.http.delete(`${this.API}/${id}`).pipe(take(1));
+        return this.http.delete(`${this.API}/${id}`);
     }
 }
