@@ -28,7 +28,7 @@
                 <tr *ngFor="let event of events$ | async">
                     <td>{{event.type}}</td>
                     <td>{{event.description}}</td>
-                    <td>{{event.date}}</td>
+                    <td>{{event.date | date: 'dd/MM/yyyy'}}</td>
                     <td>
                         <button class="btn btn-outline-secondary" [routerLink]="['details', event.id]">Detalhes</button>
                     </td>

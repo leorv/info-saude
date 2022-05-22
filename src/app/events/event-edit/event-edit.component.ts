@@ -10,6 +10,7 @@ import { EventsService } from '../events.service';
 import { Location } from '@angular/common';
 import { EventTypes2LabelMapping, EventTypesEnum } from '../event-types.enum';
 import { map, switchMap, tap, take } from 'rxjs';
+import { parseDate } from 'ngx-bootstrap/chronos';
 
 @Component({
     selector: 'app-event-edit',
@@ -60,7 +61,7 @@ export class EventEditComponent implements OnInit {
                     const id = params['id'];
                     return id;
                 }),
-                switchMap((id) => {
+                switchMap((id: number) => {
                     return this.service.getEventsById(id);
                 }),
                 tap((event: Event) => {
@@ -68,7 +69,7 @@ export class EventEditComponent implements OnInit {
                         id: event.id,
                         type: event.type,
                         description: event.description,
-                        date: event.date,
+                        date: parseDate(event.date),
                         studentId: event.studentId
                     });
                 }),

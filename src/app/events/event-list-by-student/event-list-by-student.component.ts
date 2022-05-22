@@ -33,13 +33,13 @@ export class EventListByStudentComponent implements OnInit {
         this.onRefresh();
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-        //Add '${implements OnChanges}' to the class.
-        this.numero++;
-        console.log('onChanges: ', this.numero, changes);
-        this.onRefresh();
-    }
+    // ngOnChanges(changes: SimpleChanges): void {
+    //     //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    //     //Add '${implements OnChanges}' to the class.
+    //     this.numero++;
+    //     console.log('onChanges: ', this.numero, changes);
+    //     this.onRefresh();
+    // }
 
 
     onRefresh() {
@@ -47,12 +47,6 @@ export class EventListByStudentComponent implements OnInit {
     }
 
     onEdit(id: number) {
-        // console.log(this.route);
-        // console.log(this.route.root);
-        // console.log(this.route.root.children[0]);
-        // console.log(this.route.root.children[1]);
-        // console.log(this.route.root.children[2]);
-        // console.log(this.route.root.children.map(c => c.toString));
         this.router.navigateByUrl(`events/edit/${id}`);
     }
 

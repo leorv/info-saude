@@ -79,13 +79,6 @@
       "studentId": 1
     },
     {
-      "id": 11,
-      "type": "Gripes",
-      "description": "cccc",
-      "date": "2022-05-02T00:43:48.000Z",
-      "studentId": 1
-    },
-    {
       "id": 12,
       "type": "Doenças bacterianas",
       "description": "cdscssd",
@@ -95,8 +88,15 @@
     {
       "id": 13,
       "type": "Doenças genéticas",
-      "description": "dddd",
-      "date": "2022-05-03T00:47:30.000Z",
+      "description": "xsaxsa",
+      "date": "2022-05-03T01:31:46.000Z",
+      "studentId": 1
+    },
+    {
+      "id": 14,
+      "type": "Covid",
+      "description": "xasxsa",
+      "date": "2022-05-03T01:31:46.000Z",
       "studentId": 1
     }
   ],
@@ -108,10 +108,6 @@
     {
       "id": 2,
       "name": "GRIPE"
-    },
-    {
-      "id": 3,
-      "name": "sarampo"
     },
     {
       "id": 4,
@@ -127,12 +123,12 @@
       "date": "2022-05-21T22:53:08.306Z"
     },
     {
-      "id": 3,
-      "vaccineId": 4,
+      "id": 2,
+      "vaccineId": 2,
       "studentId": 1,
-      "name": "febre amarela",
-      "description": "ddddddddd",
-      "date": "2022-05-21T22:59:04.626Z"
+      "name": "GRIPE",
+      "description": "cdcsd",
+      "date": "2022-05-22T01:47:52.589Z"
     }
   ]
 }

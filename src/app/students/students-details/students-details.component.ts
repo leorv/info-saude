@@ -43,6 +43,13 @@ export class StudentsDetailsComponent implements OnInit {
             this.showEvents = true;
         }, 500);
     }
+
+    vaccineCreated(){
+        this.showVaccinesTaken = false;
+        setTimeout(() => {
+            this.showVaccinesTaken = true;
+        }, 500);
+    }
     
 
 }

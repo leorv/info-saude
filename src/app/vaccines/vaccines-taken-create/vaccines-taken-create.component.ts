@@ -2,7 +2,7 @@ import { AlertModalService } from 'src/app/shared/alert-modal.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { VaccinesTakenService } from './../vaccines-taken.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Vaccine } from '../vaccine';
 import { Observable, map, switchMap } from 'rxjs';
 import { Location } from '@angular/common';
@@ -27,6 +27,8 @@ export class VaccinesTakenCreateComponent implements OnInit {
 
     @Input() studentId: number = 0;
     @Input() studentName: string = '';
+
+    @Output() vaccineCreated: EventEmitter<any> = new EventEmitter();
 
     vaccines$: Observable<Vaccine[]> = new Observable();
     selectedVaccine: Vaccine = {id: 0, name: ''};
@@ -78,7 +80,8 @@ export class VaccinesTakenCreateComponent implements OnInit {
             this.vaccinesTakenService.createVaccineTaken(this.form.value).subscribe({
                 next: success => {
                     this.modal.showAlertSuccess(msgSuccess);
-                    this.location.back();
+                    // this.location.back();
+                    this.vaccineCreated.emit();
                 },
                 error: error => {
                     this.modal.showAlertDanger(msgError);

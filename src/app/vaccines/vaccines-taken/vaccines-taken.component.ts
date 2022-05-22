@@ -39,6 +39,10 @@ export class VaccinesTakenComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this.onRefresh();
+    }
+
+    onRefresh() {
         this.vaccinesTaken$ = this.vaccinesTakenService.getVaccineTakensByStudentId(this.studentId);
     }
 
@@ -55,9 +59,9 @@ export class VaccinesTakenComponent implements OnInit {
             )
             .subscribe({
                 next: success => {
-                    // this.onRefresh();
+                    this.onRefresh();
                     this.modalRef?.hide();
-                    this.location.back();
+                    // this.location.back();
                 },
                 error: error => {
                     this.alertModalService.showAlertDanger('Erro ao remover a vacinação.');
