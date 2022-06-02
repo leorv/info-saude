@@ -25,13 +25,13 @@ import { VaccinesService } from '../vaccines.service';
 })
 export class VaccinesTakenCreateComponent implements OnInit {
 
-    @Input() studentId: number = 0;
+    @Input() studentId: string = '';
     @Input() studentName: string = '';
 
     @Output() vaccineCreated: EventEmitter<any> = new EventEmitter();
 
     vaccines$: Observable<Vaccine[]> = new Observable();
-    selectedVaccine: Vaccine = {id: 0, name: ''};
+    selectedVaccine: Vaccine = {id: '', name: ''};
 
     form: FormGroup = new FormGroup({});
     submitted: boolean = false;

@@ -49,9 +49,7 @@ export class StudentsListComponent implements OnInit {
                 debounceTime(2000),
                 distinctUntilChanged(),
                 // tap(value => console.log(value)),
-                switchMap(value => this.studentsService.getStudents({
-                    name: value
-                })),
+                switchMap(value => this.studentsService.getStudents(value)),
                 tap((res: Student[]) => this.total = res.length)
             );
     }
@@ -89,7 +87,7 @@ export class StudentsListComponent implements OnInit {
     //     this.router.navigate(['edit', id], { relativeTo: this.route});
     // }
 
-    onDelete(id: number) {
+    onDelete(id: string) {
         // this.cursoSelecionado = id;
         // this.modalRef = this.modalService.show(this.deleteModal, { class: 'modal-sm' });
         const result$ = this.alertModalService.showConfirmModal('Confirmação', 'Quer realmente remover este aluno?');
@@ -104,7 +102,7 @@ export class StudentsListComponent implements OnInit {
                     this.modalRef?.hide();
                 },
                 error: error => {
-                    this.alertModalService.showAlertDanger('Erro ao remover o curso.');
+                    this.alertModalService.showAlertDanger('Erro ao remover o aluno.');
                     this.modalRef?.hide();
                 }
             });

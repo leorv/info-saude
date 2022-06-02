@@ -51,13 +51,6 @@
   ],
   "events": [
     {
-      "id": 1,
-      "type": "Doenças oncológicas",
-      "description": "cscsd",
-      "date": "2022-04-04T03:00:00.000Z",
-      "studentId": 1
-    },
-    {
       "id": 2,
       "type": "Doenças em geral",
       "description": "cdscdscds",
@@ -140,6 +133,13 @@
       "description": "cdscsd",
       "date": "2022-04-04T03:00:00.000Z",
       "studentId": 1
+    },
+    {
+      "id": 14,
+      "type": "Doenças em geral",
+      "description": "csdcsdcsd",
+      "date": "2022-04-03T03:00:00.000Z",
+      "studentId": 1
     }
   ],
   "vaccines": [
@@ -153,11 +153,11 @@
     },
     {
       "id": 4,
-      "name": "febre amarela"
+      "name": "febre"
     },
     {
-      "id": 5,
-      "name": "cadadsa"
+      "id": 6,
+      "name": "HPV"
     }
   ],
   "vaccinesTaken": [
@@ -168,6 +168,22 @@
       "name": "GRIPE",
       "description": "dfscdscs",
       "date": "2022-05-22T20:37:25.434Z"
+    },
+    {
+      "id": 2,
+      "vaccineId": 6,
+      "studentId": 1,
+      "name": "HPV",
+      "description": "cdscsdcsdcds",
+      "date": "2022-03-06T03:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "vaccineId": 1,
+      "studentId": 1,
+      "name": "COVID",
+      "description": "cdscsds",
+      "date": "2022-05-26T22:27:57.590Z"
     }
   ]
 }

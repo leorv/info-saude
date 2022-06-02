@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, take, tap } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Event } from './event';
 
@@ -9,39 +9,41 @@ import { Event } from './event';
 })
 export class EventsService {
 
-    private readonly API: string = `${environment.API}events`
+    private readonly API: string = `${environment.API}events/`
 
     constructor(private http: HttpClient) { }
 
-    getEvents(params?: { description: string }): Observable<Event[]> {
-        if (params) {
-            return this.http.get<Event[]>(this.API, { params });
+    getEvents(type?: string ): Observable<Event[]> {
+        if (type) {
+            return this.http.get<Event[]>(`${this.API}getEventsByType/${type}`);
         } else {
             return this.http.get<Event[]>(this.API);
         }
     }
 
-    getEventsById(id: number): Observable<Event> {
-        return this.http.get<Event>(`${this.API}/${id}`);
+    getEventsById(id: string): Observable<Event> {
+        return this.http.get<Event>(`${this.API}${id}`);
     }
 
-    getEventsByStudentId(studentId: number): Observable<Event[]> {
-        return this.http.get<Event[]>(`${this.API}`, { params: { studentId: studentId } });
+    getEventsByStudentId(studentId: string): Observable<Event[]> {
+        // return this.http.get<Event[]>(`${this.API}`, { params: { studentId: studentId } });
+        return this.http.get<Event[]>(`${this.API}getByStudentId/${studentId}`);
     }
 
     getEventsByType(type: string): Observable<Event[]> {
-        return this.http.get<Event[]>(`${this.API}`, { params: { type: type } });
+        // return this.http.get<Event[]>(`${this.API}`, { params: { type: type } });
+        return this.http.get<Event[]>(`${this.API}getEventsByType/${type}`);
     }
 
     createEvent(event: Event): Observable<Event> {
-        return this.http.post<Event>(`${this.API}`, event);
+        return this.http.post<Event>(`${this.API}`, event).pipe(take(1));
     }
 
     updateEvent(event: Event) {
-        return this.http.put(`${this.API}/${event.id}`, event);
+        return this.http.put(`${this.API}update/${event.id}`, event).pipe(take(1));
     }
 
-    delete(id: number) {
-        return this.http.delete(`${this.API}/${id}`);
+    delete(id: string) {
+        return this.http.delete(`${this.API}delete/${id}`).pipe(take(1));
     }
 }

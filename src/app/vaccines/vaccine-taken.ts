@@ -1,7 +1,7 @@
 export interface VaccineTaken {
-    id: number,
-    vaccineId: number,
-    studentId: number,
+    id: string,
+    vaccineId: string,
+    studentId: string,
     name: string,
     description: string,
     date: Date

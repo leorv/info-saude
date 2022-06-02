@@ -50,7 +50,7 @@ import { Event } from '../event';
 })
 export class EventCreateComponent implements OnInit {
 
-    @Input('studentId') studentId: number = 0;
+    @Input('studentId') studentId: string = '';
 
     @Output() eventCreated: EventEmitter<any> = new EventEmitter();
 

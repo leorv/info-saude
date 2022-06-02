@@ -12,10 +12,10 @@ import { EventsService } from '../events.service';
 })
 export class EventDetailsComponent implements OnInit {
 
-    event: Event = { id: 0, type: '', description: '', date: new Date, studentId: 0};
+    event: Event = { id: '', type: '', description: '', date: new Date, studentId: ''};
     eventType: string = '';
 
-    student: Student = { id: 0, name: '', gender: '', birthDate: new Date, grade: '', cpf: 0, events: [] };
+    student: Student = { id: '', name: '', gender: '', birthDate: new Date, grade: '', cpf: 0, events: [] };
 
     constructor(
         private route: ActivatedRoute,
@@ -29,7 +29,7 @@ export class EventDetailsComponent implements OnInit {
                 const id = params['id'];
                 return id;
             }),
-            switchMap((id: number) => this.service.getEventsById(id))
+            switchMap((id: string) => this.service.getEventsById(id))
         ).subscribe((event: Event) => {
             this.event = event;
             switch (event.type){

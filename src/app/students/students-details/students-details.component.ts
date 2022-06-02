@@ -12,7 +12,7 @@ import { map, switchMap } from 'rxjs';
 })
 export class StudentsDetailsComponent implements OnInit {
 
-    student: Student = { id: 0, name: '', gender: '', birthDate: new Date, grade: '', cpf: 0, events: []};
+    student: Student = { id: "", name: '', gender: '', birthDate: new Date, grade: '', cpf: 0, events: []};
 
     showEvents: boolean = false;
     showVaccinesTaken: boolean = false;
@@ -28,7 +28,7 @@ export class StudentsDetailsComponent implements OnInit {
                 const id = params['id'];
                 return id;
             }),
-            switchMap((id: number) => this.service.getStudentsById(id))
+            switchMap((id: string) => this.service.getStudentsById(id))
         ).subscribe((student: Student) => {
             this.student = student;
             console.log(this.student);

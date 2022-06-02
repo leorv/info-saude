@@ -4,7 +4,7 @@ import { Vaccine } from './../vaccine';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, EMPTY, filter, map, Observable, switchMap, take, tap } from 'rxjs';
-import { VaccineService } from '../vaccine.service';
+import { VaccinesService } from '../vaccines.service';
 
 @Component({
     selector: 'app-vaccine-list',
@@ -27,12 +27,12 @@ export class VaccinesListComponent implements OnInit {
     @ViewChild('deleteModal') deleteModal: any;
 
     constructor(
-        private vaccineService: VaccineService,
+        private vaccinesService: VaccinesService,
         private alertModalService: AlertModalService
     ) { }
 
     ngOnInit(): void {
-        this.vaccines$ = this.vaccineService.getVaccines().pipe(
+        this.vaccines$ = this.vaccinesService.getVaccines().pipe(
             tap((res: Vaccine[]) => this.total = res.length)
         );
         // setTimeout(() => {
@@ -51,9 +51,9 @@ export class VaccinesListComponent implements OnInit {
                     debounceTime(3000),
                     distinctUntilChanged(),
                     // tap(value => console.log(value)),
-                    switchMap(value => this.vaccineService.getVaccines({
-                        name: value
-                    })),
+                    switchMap((value: string) => this.vaccinesService.getVaccines(
+                        value
+                    )),
                     tap((res: Vaccine[]) => {
                         this.total = res.length;
                         console.log('feita a requisição');
@@ -80,7 +80,7 @@ export class VaccinesListComponent implements OnInit {
             // params = params.set('search', value);
             // params = params.set('fields', fields);
 
-            this.vaccines$ = this.vaccineService.getVaccines()
+            this.vaccines$ = this.vaccinesService.getVaccines()
                 .pipe(
                     tap((res: Vaccine[]) => this.total = res.length)
                     // map((res: Vaccine[]) => res.vaccines)
@@ -88,14 +88,14 @@ export class VaccinesListComponent implements OnInit {
         }
     }
 
-    onDelete(id: number) {
+    onDelete(id: string) {
         // this.cursoSelecionado = id;
         // this.modalRef = this.modalService.show(this.deleteModal, { class: 'modal-sm' });
         const vaccine$ = this.alertModalService.showConfirmModal('Confirmação', 'Quer realmente remover esta vacina?');
         vaccine$.asObservable()
             .pipe(
                 take(1),
-                switchMap(vaccine => vaccine ? this.vaccineService.delete(id) : EMPTY)
+                switchMap(vaccine => vaccine ? this.vaccinesService.delete(id) : EMPTY)
             )
             .subscribe({
                 next: success => {

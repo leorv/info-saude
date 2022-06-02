@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class EventListByStudentComponent implements OnInit {
 
-    @Input('studentId') studentId: number = 0;
+    @Input('studentId') studentId: string = '';
     @Input('studentName') studentName: string = '';
 
     events$: Observable<Event[]> = new Observable();
@@ -46,11 +46,11 @@ export class EventListByStudentComponent implements OnInit {
         this.events$ = this.service.getEventsByStudentId(this.studentId);
     }
 
-    onEdit(id: number) {
+    onEdit(id: string) {
         this.router.navigateByUrl(`events/edit/${id}`);
     }
 
-    onDelete(id: number) {
+    onDelete(id: string) {
         const events$ = this.alertModalService.showConfirmModal('Confirmação', 'Quer realmente remover este evento?');
         events$.asObservable()
             .pipe(

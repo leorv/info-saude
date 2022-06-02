@@ -9,31 +9,31 @@ import { Vaccine } from './vaccine';
 })
 export class VaccinesService {
 
-    private readonly API: string = `${environment.API}vaccines`
+    private readonly API: string = `${environment.API}vaccines/`
 
     constructor(private http: HttpClient) { }
 
-    getVaccines(params?: { name: string }): Observable<Vaccine[]> {
-        if (params) {
-            return this.http.get<Vaccine[]>(this.API, { params });
+    getVaccines(name?: string): Observable<Vaccine[]> {
+        if (name) {
+            return this.http.get<Vaccine[]>(`${this.API}getByName/${name}`);
         } else {
             return this.http.get<Vaccine[]>(this.API);
         }
     }
 
     getVaccinesById(id: number): Observable<Vaccine> {
-        return this.http.get<Vaccine>(`${this.API}/${id}`).pipe(take(1));
+        return this.http.get<Vaccine>(`${this.API}/${id}`);
     }
 
     createVaccine(vaccine: Vaccine) {
-        return this.http.post(`${this.API}`, vaccine).pipe(take(1));
+        return this.http.post(`${this.API}create`, vaccine).pipe(take(1));
     }
 
     updateVaccine(vaccine: Vaccine) {
-        return this.http.put(`${this.API}/${vaccine.id}`, vaccine).pipe(take(1));
+        return this.http.put(`${this.API}update`, vaccine).pipe(take(1));
     }
 
-    delete(id: number) {
-        return this.http.delete(`${this.API}/${id}`).pipe(take(1));
+    delete(id: string) {
+        return this.http.delete(`${this.API}delete/${id}`).pipe(take(1));
     }
 }

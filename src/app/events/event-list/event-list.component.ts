@@ -43,12 +43,12 @@ export class EventsListComponent implements OnInit {
             .pipe(
                 map((value: string) => value.trim()),
                 filter(value => value.length > 1),
-                debounceTime(2000),
+                debounceTime(400),
                 distinctUntilChanged(),
                 // tap(value => console.log(value)),
-                switchMap(value => this.eventsService.getEvents({
-                    description: value
-                })),
+                switchMap(value => this.eventsService.getEvents(
+                    value
+                )),
                 tap((res: Event[]) => this.total = res.length)
             );
     }
@@ -86,7 +86,7 @@ export class EventsListComponent implements OnInit {
     //     this.router.navigate(['edit', id], { relativeTo: this.route});
     // }
 
-    onDelete(id: number) {
+    onDelete(id: string) {
         // this.cursoSelecionado = id;
         // this.modalRef = this.modalService.show(this.deleteModal, { class: 'modal-sm' });
         const event$ = this.alertModalService.showConfirmModal('Confirmação', 'Quer realmente remover este evento?');

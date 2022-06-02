@@ -1,9 +1,9 @@
 export interface Event {
-    id: number;
+    id: string;
     type: string;
     description: string;
     date: Date;
-    studentId: number;
+    studentId: string;
 }
 
 // switch (event.type) {

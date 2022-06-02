@@ -44,7 +44,7 @@ export class StudentsEditComponent implements OnInit {
                 const id = params['id'];
                 return id;
             }),
-            switchMap((id: number) => this.service.getStudentsById(id))
+            switchMap((id: string) => this.service.getStudentsById(id))
         ).subscribe((student: Student) => this.updateForm(student));
 
         // .subscribe(

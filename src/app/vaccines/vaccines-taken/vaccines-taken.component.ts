@@ -25,7 +25,7 @@ export class VaccinesTakenComponent implements OnInit {
 
     vaccinesTaken$: Observable<VaccineTaken[]>  = new Observable();
 
-    @Input() studentId: number = 0;
+    @Input() studentId: string = "";
     @Input() studentName: string = '';
 
     modalRef?: BsModalRef;
@@ -46,11 +46,11 @@ export class VaccinesTakenComponent implements OnInit {
         this.vaccinesTaken$ = this.vaccinesTakenService.getVaccineTakensByStudentId(this.studentId);
     }
 
-    onEdit(id: number){
+    onEdit(id: string){
         this.router.navigateByUrl(`vaccines-taken/edit/${id}`);
     }
 
-    onDelete(id: number){
+    onDelete(id: string){
         const result$ = this.alertModalService.showConfirmModal('Confirmação', 'Quer realmente remover esta vacinação?');
         result$.asObservable()
             .pipe(

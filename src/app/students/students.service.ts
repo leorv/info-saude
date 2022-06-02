@@ -9,31 +9,31 @@ import { Student } from './student';
 })
 export class StudentsService {
 
-    private readonly API: string = `${environment.API}students`
+    private readonly API: string = `${environment.API}students/`
 
     constructor(private http: HttpClient) { }
 
-    getStudents(params?: { name: string }): Observable<Student[]> {
-        if (params) {
-            return this.http.get<Student[]>(this.API, { params });
+    getStudents(name?: string): Observable<Student[]> {
+        if (name) {
+            return this.http.get<Student[]>(`${this.API}getByName/${name}`);
         } else {
             return this.http.get<Student[]>(this.API);
         }
     }
 
-    getStudentsById(id: number): Observable<Student> {
-        return this.http.get<Student>(`${this.API}/${id}`).pipe(take(1));
+    getStudentsById(id: string): Observable<Student> {
+        return this.http.get<Student>(`${this.API}/${id}`);
     }
 
     createStudent(student: Student) {
-        return this.http.post(`${this.API}`, student).pipe(take(1));
+        return this.http.post(`${this.API}create`, student);
     }
 
     updateStudent(student: Student) {
-        return this.http.put(`${this.API}/${student.id}`, student).pipe(take(1));
+        return this.http.put(`${this.API}update/${student.id}`, student);
     }
 
-    delete(id: number){
-        return this.http.delete(`${this.API}/${id}`).pipe(take(1));
+    delete(id: string){
+        return this.http.delete(`${this.API}delete/${id}`);
     }
 }

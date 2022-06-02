@@ -2,7 +2,7 @@ import { VaccineTaken } from './../vaccines/vaccine-taken';
 import { Observable, Subscription, take } from 'rxjs';
 import { StudentsService } from './../students/students.service';
 import { VaccinesTakenService } from './../vaccines/vaccines-taken.service';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 // import { Chart } from 'chart.js';
 import { Student } from '../students/student';
 import { Event } from '../events/event';
@@ -16,7 +16,7 @@ import { Chart, registerables } from 'chart.js';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
     @ViewChild('eventsChart', { static: true }) eventChart: ElementRef = new ElementRef({});
 
@@ -47,6 +47,10 @@ export class HomeComponent implements OnInit {
         this.onSubscriptions().then(() => {
             this.createEventChart();
         });
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.unsubscribe();
     }
 
     onSubscriptions(): Promise<any> {
@@ -360,7 +364,6 @@ export class HomeComponent implements OnInit {
         const data: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
         console.log('tipo do evento passado: ', type);
-
 
         for (let i = 0; i < events.length; i++) {
             let month = new Date(events[i].date).getMonth();

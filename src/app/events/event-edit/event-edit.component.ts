@@ -21,7 +21,7 @@ import { parseDate } from 'ngx-bootstrap/chronos';
 export class EventEditComponent implements OnInit {
 
     @Input('studentName') studentName?: string = '';
-    @Input('event') event?: Event = {id: 0, type: '', description: '', date: new Date, studentId: 0};
+    @Input('event') event?: Event = {id: '', type: '', description: '', date: new Date, studentId: ''};
 
     eventTypes2LabelMapping: Record<EventTypesEnum, string> = EventTypes2LabelMapping;
     eventTypes: EventTypesEnum[] = Object.values(EventTypesEnum);
@@ -47,7 +47,7 @@ export class EventEditComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        if (this.event?.id != 0){
+        if (this.event?.id != '' && this.event?.id != null){
             this.form.setValue({
                 id: this.event?.id,
                 type: this.event?.type,
@@ -61,7 +61,7 @@ export class EventEditComponent implements OnInit {
                     const id = params['id'];
                     return id;
                 }),
-                switchMap((id: number) => {
+                switchMap((id: string) => {
                     return this.service.getEventsById(id);
                 }),
                 tap((event: Event) => {

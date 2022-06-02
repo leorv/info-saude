@@ -9,30 +9,36 @@ import { VaccineTaken } from './vaccine-taken';
 })
 export class VaccinesTakenService {
 
-    private readonly API: string = `${environment.API}vaccinesTaken`
+    private readonly API: string = `${environment.API}vaccinesTaken/`
 
     constructor(private http: HttpClient) { }
 
-    getVaccineTakens(params?: { name: string }): Observable<VaccineTaken[]> {
-        if (params) {
-            return this.http.get<VaccineTaken[]>(this.API, { params });
-        }
+    getVaccineTakens(): Observable<VaccineTaken[]> {
+        // if (name) {
+        //     return this.http.get<VaccineTaken[]>(`${this.API}`);
+        // }
         return this.http.get<VaccineTaken[]>(this.API);
     }
 
-    getVaccineTakensByStudentId(studentId: number): Observable<VaccineTaken[]> {
-        return this.http.get<VaccineTaken[]>(`${this.API}`, { params: { studentId: studentId } });
+    getVaccineTakensById(id: string): Observable<VaccineTaken[]> {
+        return this.http.get<VaccineTaken[]>(`${this.API}${id}`);
+    }
+
+
+    getVaccineTakensByStudentId(studentId: string): Observable<VaccineTaken[]> {
+        // return this.http.get<VaccineTaken[]>(`${this.API}`, { params: { studentId: studentId } });
+        return this.http.get<VaccineTaken[]>(`${this.API}getByStudentId/${studentId}`);
     }
 
     createVaccineTaken(vaccine: VaccineTaken) {
-        return this.http.post(`${this.API}`, vaccine).pipe(take(1));
+        return this.http.post(`${this.API}create`, vaccine).pipe(take(1));
     }
 
     updateVaccineTaken(vaccine: VaccineTaken) {
-        return this.http.put(`${this.API}/${vaccine.id}`, vaccine).pipe(take(1));
+        return this.http.put(`${this.API}update`, vaccine).pipe(take(1));
     }
 
-    delete(id: number) {
-        return this.http.delete(`${this.API}/${id}`).pipe(take(1));
+    delete(id: string) {
+        return this.http.delete(`${this.API}delete/${id}`).pipe(take(1));
     }
 }
