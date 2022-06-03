@@ -111,13 +111,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     createEventChart() {
         const covid: string = EventTypesEnum.COV;
         const dg: string = EventTypesEnum.DG;
-        const donc: string = EventTypesEnum.DO;
+        // const donc: string = EventTypesEnum.DO;
         const others: string = EventTypesEnum.OT;
         const virus: string = EventTypesEnum.VIR;
 
         const dataCovid = this.dataPointsEventChart(covid);
         const dataDg = this.dataPointsEventChart(dg);
-        const dataDonc = this.dataPointsEventChart(donc);
+        // const dataDonc = this.dataPointsEventChart(donc);
         const dataOthers = this.dataPointsEventChart(others);
         const dataVirus = this.dataPointsEventChart(virus);
 
@@ -160,21 +160,21 @@ export class HomeComponent implements OnInit, OnDestroy {
                         // cubicInterpolationMode: 'monotone',
                         // tension: 0.4
                     },
-                    {
-                        label: donc,
-                        data: dataDonc,
-                        borderColor: '#807a74', // Bright green
+                    // {
+                    //     label: donc,
+                    //     data: dataDonc,
+                    //     borderColor: '#807a74', // Bright green
 
-                        // BAR
-                        backgroundColor: '#b8b0a7',
-                        borderWidth: 2,
-                        borderRadius: 10,
-                        borderSkipped: 'bottom',
+                    //     // BAR
+                    //     backgroundColor: '#b8b0a7',
+                    //     borderWidth: 2,
+                    //     borderRadius: 10,
+                    //     borderSkipped: 'bottom',
 
-                        // fill: false,
-                        // cubicInterpolationMode: 'monotone',
-                        // tension: 0.4
-                    },
+                    //     // fill: false,
+                    //     // cubicInterpolationMode: 'monotone',
+                    //     // tension: 0.4
+                    // },
                     {
                         label: others,
                         data: dataOthers,

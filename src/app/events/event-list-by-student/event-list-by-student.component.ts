@@ -60,11 +60,13 @@ export class EventListByStudentComponent implements OnInit {
                 next: success => {
                     this.onRefresh();
                     this.modalRef?.hide();
-                },
-                error: error => {
-                    this.alertModalService.showAlertDanger('Erro ao remover o curso.');
-                    this.modalRef?.hide();
                 }
+                // ,
+                // TODO: Tratar erro
+                // error: error => {
+                //     this.alertModalService.showAlertDanger('Erro ao remover o evento.');
+                //     this.modalRef?.hide();
+                // }
             });
     }
 }

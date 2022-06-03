@@ -36,14 +36,14 @@ export class EventsService {
     }
 
     createEvent(event: Event): Observable<Event> {
-        return this.http.post<Event>(`${this.API}`, event).pipe(take(1));
+        return this.http.post<Event>(`${this.API}create`, event);
     }
 
     updateEvent(event: Event) {
-        return this.http.put(`${this.API}update/${event.id}`, event).pipe(take(1));
+        return this.http.put(`${this.API}update`, event);
     }
 
     delete(id: string) {
-        return this.http.delete(`${this.API}delete/${id}`).pipe(take(1));
+        return this.http.delete(`${this.API}delete/${id}`);
     }
 }

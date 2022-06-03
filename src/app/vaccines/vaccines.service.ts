@@ -22,7 +22,7 @@ export class VaccinesService {
     }
 
     getVaccinesById(id: number): Observable<Vaccine> {
-        return this.http.get<Vaccine>(`${this.API}/${id}`);
+        return this.http.get<Vaccine>(`${this.API}${id}`);
     }
 
     createVaccine(vaccine: Vaccine) {

@@ -101,11 +101,13 @@ export class VaccinesListComponent implements OnInit {
                 next: success => {
                     this.onRefresh();
                     this.modalRef?.hide();
-                },
-                error: error => {
-                    this.alertModalService.showAlertDanger('Erro ao remover a vacina.');
-                    this.modalRef?.hide();
                 }
+                // TODO: Tratar erro
+                // ,
+                // error: error => {
+                //     this.alertModalService.showAlertDanger('Erro ao remover a vacina.');
+                //     this.modalRef?.hide();
+                // }
             })
     }
 }

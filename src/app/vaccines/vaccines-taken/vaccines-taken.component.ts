@@ -62,12 +62,15 @@ export class VaccinesTakenComponent implements OnInit {
                     this.onRefresh();
                     this.modalRef?.hide();
                     // this.location.back();
-                },
-                error: error => {
-                    this.alertModalService.showAlertDanger('Erro ao remover a vacinação.');
-                    this.modalRef?.hide();
                 }
-            })
+                // TODO: Tratar erro
+                // ,
+                // error: error => {
+                //     this.alertModalService.showAlertDanger('Erro ao remover a vacinação.');
+                //     this.modalRef?.hide();
+                // }
+            });
+        this.location.back();
     }
 
 }

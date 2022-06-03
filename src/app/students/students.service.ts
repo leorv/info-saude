@@ -22,7 +22,7 @@ export class StudentsService {
     }
 
     getStudentsById(id: string): Observable<Student> {
-        return this.http.get<Student>(`${this.API}/${id}`);
+        return this.http.get<Student>(`${this.API}${id}`);
     }
 
     createStudent(student: Student) {
@@ -33,7 +33,7 @@ export class StudentsService {
         return this.http.put(`${this.API}update/${student.id}`, student);
     }
 
-    delete(id: string){
+    delete(id: string): Observable<any> {
         return this.http.delete(`${this.API}delete/${id}`);
     }
 }

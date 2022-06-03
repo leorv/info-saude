@@ -58,7 +58,7 @@ export class EventCreateComponent implements OnInit {
     eventTypes: EventTypesEnum[] = Object.values(EventTypesEnum);
 
     form: FormGroup = this.formBuilder.group({
-        id: 0,
+        id: '',
         type: ["", Validators.required],
         description: ["", Validators.required],
         date: [new Date, Validators.required],
@@ -107,11 +107,14 @@ export class EventCreateComponent implements OnInit {
                     this.modal.showAlertSuccess(msgSuccess);
                     this.eventCreated.emit();
                     // this.location.back();
-                },
-                error: error => {
-                    this.modal.showAlertDanger(msgError);
                 }
-            })
+                // ,
+                // TODO: Tratar erro
+                // error: error => {
+                //     this.modal.showAlertDanger(msgError);
+                // }
+            });
+            this.location.back();
         }
     }
 

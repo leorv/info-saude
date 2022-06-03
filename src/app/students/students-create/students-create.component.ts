@@ -45,11 +45,14 @@ export class StudentsCreateComponent implements OnInit {
                 next: success => {
                     this.modal.showAlertSuccess(msgSuccess);
                     this.location.back();
-                },
-                error: error => {
-                    this.modal.showAlertDanger(msgError);
                 }
-            })
+                // TODO: Tratar erro
+                // ,
+                // error: error => {
+                //     this.modal.showAlertDanger(msgError);
+                // }
+            });
+            this.location.back();
         }
     }
 

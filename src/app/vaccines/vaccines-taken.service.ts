@@ -9,7 +9,7 @@ import { VaccineTaken } from './vaccine-taken';
 })
 export class VaccinesTakenService {
 
-    private readonly API: string = `${environment.API}vaccinesTaken/`
+    private readonly API: string = `${environment.API}vaccines-taken/`
 
     constructor(private http: HttpClient) { }
 
@@ -31,14 +31,14 @@ export class VaccinesTakenService {
     }
 
     createVaccineTaken(vaccine: VaccineTaken) {
-        return this.http.post(`${this.API}create`, vaccine).pipe(take(1));
+        return this.http.post(`${this.API}create`, vaccine);
     }
 
     updateVaccineTaken(vaccine: VaccineTaken) {
-        return this.http.put(`${this.API}update`, vaccine).pipe(take(1));
+        return this.http.put(`${this.API}update`, vaccine);
     }
 
     delete(id: string) {
-        return this.http.delete(`${this.API}delete/${id}`).pipe(take(1));
+        return this.http.delete(`${this.API}delete/${id}`);
     }
 }

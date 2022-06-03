@@ -7,6 +7,7 @@ import { Vaccine } from '../vaccine';
 import { Observable, map, switchMap } from 'rxjs';
 import { Location } from '@angular/common';
 import { VaccinesService } from '../vaccines.service';
+import { VaccineTaken } from '../vaccine-taken';
 
 // export interface VaccineTaken {
 //     id: number,
@@ -47,9 +48,9 @@ export class VaccinesTakenCreateComponent implements OnInit {
 
     ngOnInit(): void {
         this.form = this.formBuilder.group({
-            id: 0,
-            vaccineId: 0,
-            studentId: 0,
+            id: '',
+            vaccineId: '',
+            studentId: '',
             name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(128)]],
             description: ['', Validators.required],
             date: [new Date, Validators.required]
@@ -77,16 +78,31 @@ export class VaccinesTakenCreateComponent implements OnInit {
             let msgSuccess = 'Informações atualizadas com sucesso!';
             let msgError = 'Erro ao tentar gravar as informações.';
 
-            this.vaccinesTakenService.createVaccineTaken(this.form.value).subscribe({
+            const vaccineTaken: VaccineTaken = {
+                id: '',
+                date: this.form.controls['date'].value,
+                description: this.form.controls['description'].value,
+                name: this.form.controls['name'].value,
+                studentId: this.form.controls['studentId'].value,
+                vaccineId: this.form.controls['vaccineId'].value
+            }
+            // this.form.patchValue({
+            //     id: ''
+            // })
+
+            this.vaccinesTakenService.createVaccineTaken(vaccineTaken).subscribe({
                 next: success => {
                     this.modal.showAlertSuccess(msgSuccess);
                     // this.location.back();
                     this.vaccineCreated.emit();
-                },
-                error: error => {
-                    this.modal.showAlertDanger(msgError);
                 }
-            })
+                // TODO: Tratar erro
+                // ,
+                // error: error => {
+                //     this.modal.showAlertDanger(msgError);
+                // }
+            });
+            this.location.back();
         }
     }
 

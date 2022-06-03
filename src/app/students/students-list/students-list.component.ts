@@ -93,7 +93,7 @@ export class StudentsListComponent implements OnInit {
         const result$ = this.alertModalService.showConfirmModal('Confirmação', 'Quer realmente remover este aluno?');
         result$.asObservable()
             .pipe(
-                take(1),
+                // take(1),
                 switchMap(result => result ? this.studentsService.delete(id) : EMPTY)
             )
             .subscribe({
@@ -101,10 +101,11 @@ export class StudentsListComponent implements OnInit {
                     this.onRefresh();
                     this.modalRef?.hide();
                 },
-                error: error => {
-                    this.alertModalService.showAlertDanger('Erro ao remover o aluno.');
-                    this.modalRef?.hide();
-                }
+                // TODO: Tratar erro students list
+                // error: error => {
+                //     this.alertModalService.showAlertDanger('Erro ao remover o aluno.');
+                //     this.modalRef?.hide();
+                // }
             });
     }
 
